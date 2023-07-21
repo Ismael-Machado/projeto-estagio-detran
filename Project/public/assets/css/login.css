@@ -1,0 +1,40 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+}
+
+.img-logo {
+    width: 300px;
+}
+
+.form-login {
+    flex-basis: 450px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.icofont-megaphone {
+    font-size: 2.3rem;
+}
+
+.card-body {
+    font-size: 1.1rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.restaurar-senha {
+
+    font-size: 0.8rem;
+}
