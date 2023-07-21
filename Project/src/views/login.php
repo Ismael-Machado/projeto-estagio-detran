@@ -11,9 +11,9 @@
     <title>Chamados Detran</title>
 </head>
 <body>
-    <!-- <figure class="img-top"> 
+    <figure class="img-top"> 
         <img src="https://www.detran.ac.gov.br/wp-content/uploads/2023/01/logoSiteDetranSecom.png" alt="logo do governo do acre e logo do detran" class="img-logo">
-    </figure> -->
+    </figure>
     
     <form class="form-login" action="#" method="post">
         <div class="login-card card">

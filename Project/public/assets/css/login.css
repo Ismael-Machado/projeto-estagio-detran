@@ -3,11 +3,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     background-color: #ddd;
 }
 
 .img-logo {
-    width: 300px;
+    width: 350px;
 }
 
 .form-login {
@@ -35,6 +36,5 @@ body {
 }
 
 .restaurar-senha {
-
     font-size: 0.8rem;
 }
