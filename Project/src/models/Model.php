@@ -29,11 +29,31 @@ class Model {
         $this->values[$key] = $value;
     }
 
-    public static function getSelect($filters = [], $columns = '*') {
-        $sql = 'SELECT ${columuns} FROM '
-            . static::$tableName
-            . static::getFilters($filters);
-        return $sql;
+    //pega o resultado bruto de uma consulta e retorna objetos associados ao array de resultados
+    public static function get($filters = [], $columns = '*') {
+        $objects = [];
+        $result = static::getResultFromSelect($filters, $columns);
+        
+        if($result) {
+            $class = get_called_class();
+            while($row = $result->fetch_assoc()) {
+                array_push($objects, new $class($row));
+            }
+        }
+
+        return $objects;
+    }
+
+    //retorna o resultado bruto de uma consulta 
+    public static function getResultFromSelect($filters = [], $columns = '*') {
+        $sql = "SELECT ${columns} FROM " . static::$tableName . static::getFilters($filters);
+
+        $result = Database::getResultFromQuery($sql);
+        if($result->num_rows === 0) {
+            return null;
+        } else {
+            return $result;
+        }
     }
 
     //refactoring code 
