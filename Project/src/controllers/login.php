@@ -6,9 +6,9 @@ if(count($_POST) > 0) {
     try {
         $user = $login->checkLogin();
         echo "Usuário {$user->usuario_nome} logado com sucesso!";
-    } catch (Exception $e) {
-        echo 'Falha no login';
+    } catch (AppException $e) {
+        echo $e->getMessage();
     }
 }
 
-loadView('login');
+loadView('login', $_POST);

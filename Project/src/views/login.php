@@ -24,7 +24,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="email" id="email">E-mail</label>
-                    <input type="email" id="email" name="usuario_email" class="form-control"
+                    <input type="email" id="email" name="usuario_email" class="form-control" value="<?= $usuario_email ?>"
                     placeholder="Informe seu e-mail institucional" autofocus> 
                 </div>
                 <div class="form-group">
