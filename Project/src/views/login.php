@@ -24,12 +24,12 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="email" id="email">E-mail</label>
-                    <input type="email" id="email" name="email" class="form-control"
+                    <input type="email" id="email" name="usuario_email" class="form-control"
                     placeholder="Informe seu e-mail institucional" autofocus> 
                 </div>
                 <div class="form-group">
                     <label for="password" id="password">Senha</label>
-                    <input type="password" id="password" name="password" class="form-control"
+                    <input type="password" id="password" name="usuario_senha" class="form-control"
                     placeholder="Informe a sua senha"> 
                     <a href="#" class="restaurar-senha mx-1">restaurar senha?</a>
                 </div>
