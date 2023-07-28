@@ -22,15 +22,26 @@
                 <span class="font-weight-bold">CHAMADOS</span>
             </div>
             <div class="card-body">
+                <?php include(TEMPLATE_PATH . '/messages.php') ?>
                 <div class="form-group">
                     <label for="email" id="email">E-mail</label>
-                    <input type="email" id="email" name="usuario_email" class="form-control" value="<?= $usuario_email ?>"
-                    placeholder="Informe seu e-mail institucional" autofocus> 
+                    <input type="email" id="email" name="usuario_email" class="form-control <?= $errors['usuario_email'] ? 'is-invalid' : '' ?>" value="<?= $usuario_email ?>"
+                    placeholder="Informe seu e-mail institucional" autofocus>
+                    
+                    <div class="invalid-feedback">
+                        <?= $errors['usuario_email'] ?>
+                    </div>
+                   
                 </div>
                 <div class="form-group">
                     <label for="password" id="password">Senha</label>
-                    <input type="password" id="password" name="usuario_senha" class="form-control"
+                    <input type="password" id="password" name="usuario_senha" class="form-control <?= $errors['usuario_senha'] ? 'is-invalid' : '' ?>"
                     placeholder="Informe a sua senha"> 
+                    
+                    <div class="invalid-feedback">
+                        <?= $errors['usuario_senha'] ?>
+                    </div>
+
                     <a href="#" class="restaurar-senha mx-1">restaurar senha?</a>
                 </div>
             </div>
