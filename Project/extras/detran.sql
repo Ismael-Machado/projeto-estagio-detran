@@ -1,30 +1,34 @@
-CREATE DATABASE  IF NOT EXISTS `detran` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `detran`;
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: detran
--- ------------------------------------------------------
--- Server version	8.0.33
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 31-Jul-2023 às 16:01
+-- Versão do servidor: 8.0.33
+-- versão do PHP: 8.0.26
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `chamados`
+-- Banco de dados: `detran`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `chamados`
 --
 
 DROP TABLE IF EXISTS `chamados`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `chamados` (
+CREATE TABLE IF NOT EXISTS `chamados` (
   `chamado_id` bigint NOT NULL AUTO_INCREMENT,
   `chamado_setor` varchar(255) NOT NULL,
   `chamado_solicitante` varchar(255) NOT NULL,
@@ -37,53 +41,61 @@ CREATE TABLE `chamados` (
   `setor_id_fk` bigint NOT NULL,
   PRIMARY KEY (`chamado_id`),
   KEY `fk_chamados_usuarios_idx` (`usuario_id_fk`),
-  KEY `fk_chamados_setores1_idx` (`setor_id_fk`),
-  CONSTRAINT `fk_chamados_setores1` FOREIGN KEY (`setor_id_fk`) REFERENCES `setores` (`setor_id`),
-  CONSTRAINT `fk_chamados_usuarios` FOREIGN KEY (`usuario_id_fk`) REFERENCES `usuarios` (`usuario_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  KEY `fk_chamados_setores1_idx` (`setor_id_fk`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `chamados`
+-- Extraindo dados da tabela `chamados`
 --
 
-LOCK TABLES `chamados` WRITE;
-/*!40000 ALTER TABLE `chamados` DISABLE KEYS */;
-/*!40000 ALTER TABLE `chamados` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `chamados` (`chamado_id`, `chamado_setor`, `chamado_solicitante`, `chamado_email_solicitante`, `chamado_assunto`, `chamado_descricao`, `chamado_criado_em`, `chamado_status`, `usuario_id_fk`, `setor_id_fk`) VALUES
+(1, 'Divisão de Arquivo', 'Hall Jordan', 'hall.jordan@detran.com', 'Monitor', 'O monitor está ligado mas não dá imagem', '2023-06-03 09:30:00', 'Aberto', 1, 1),
+(2, 'Divisão de Serviços Gerais', 'Half Jones', 'half.jones@detran.com', 'Gabinete fazendo barulho', 'Sempre que ligo o computador, começa a fazer um barulho muito alto vindo dele', '2023-06-03 09:45:00', 'Aberto', 1, 2),
+(3, 'Divisão de Almoxarifado e Patrimônio', 'Nathan Drake', 'nathan.drake@detran.com', 'Sem água no bebedouro', 'Estou com sede e não tem água no bebedouro', '2023-06-03 10:00:00', 'Fechado', 2, 3),
+(4, 'Divisão de Protocolo', 'Lara Croft', 'lara.croft@detran.com', 'Computador desligando sozinho', 'O computador sempre desliga sozinho depois de 5 minutos de uso', '2023-06-04 07:30:00', 'Em atendimento', 2, 4),
+(5, 'Divisão de Almoxarifado e Patrimônio', 'Robert Garcia', 'robert.garcia@detran.com', 'Solicito Token de acesso', 'Preciso do Token de acesso para o sistema de atendimento do Gabinete Administrativo do Almoxarifado', '2023-06-04 07:45:00', 'Aberto', 1, 3),
+(6, 'Divisão Financeira', 'Sonya Blade', 'sonya.blade@detran.com', 'Portal de serviços financeiros fora do ar', 'O portal de serviços do departamento financeiro está caindo e não estamos conseguindo seguir com nossas funções', '2023-06-04 08:30:00', 'Em atendimento', 2, 6),
+(7, 'Divisão de Protocolo', 'Mary Jane', 'mary.jane@detran.com', 'Usuário bloqueado', 'Estou tentando acessar o Sistema de Protocolo, mas está aparecendo que meu perfil foi bloqueado', '2023-06-04 08:45:00', 'Aberto', 2, 4),
+(8, 'Divisão de Licitações', 'Johnny Blaze', 'johnny.blaze@detran.com', 'Não estou conseguindo anexar documentos ao DG', 'Estou tentando enviar documentos em pdf para o DG,  mas o sitema está mostrando que não tem documento anexado depois que eu clico em enviar ', '2023-06-04 09:00:00', 'Aberto', 2, 8);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `setores`
+-- Estrutura da tabela `setores`
 --
 
 DROP TABLE IF EXISTS `setores`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `setores` (
+CREATE TABLE IF NOT EXISTS `setores` (
   `setor_id` bigint NOT NULL AUTO_INCREMENT,
   `setor_nome` varchar(150) NOT NULL,
   `setor_is_ativo` tinyint NOT NULL,
   PRIMARY KEY (`setor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `setores`
+-- Extraindo dados da tabela `setores`
 --
 
-LOCK TABLES `setores` WRITE;
-/*!40000 ALTER TABLE `setores` DISABLE KEYS */;
-/*!40000 ALTER TABLE `setores` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `setores` (`setor_id`, `setor_nome`, `setor_is_ativo`) VALUES
+(1, 'Divisão de Arquivo', 1),
+(2, 'Divisão de Serviços Gerais', 1),
+(3, 'Divisão de Almoxarifado e Patrimônio', 1),
+(4, 'Divisão de Protocolo', 1),
+(5, 'Divisão de Transporte', 1),
+(6, 'Divisão Financeira', 1),
+(7, 'Divisão de Contabilidade e Arrecadação', 1),
+(8, 'Divisão de Licitações', 1),
+(9, 'Divisão de Fiscalização', 0),
+(10, 'Divisão de Defesa Prévia', 0);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 DROP TABLE IF EXISTS `usuarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario_id` bigint NOT NULL AUTO_INCREMENT,
   `usuario_nome` varchar(255) NOT NULL,
   `usuario_senha` varchar(255) NOT NULL,
@@ -92,25 +104,29 @@ CREATE TABLE `usuarios` (
   `usuario_is_ativo` tinyint NOT NULL,
   `usuario_is_admin` tinyint NOT NULL,
   PRIMARY KEY (`usuario_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `usuarios` (`usuario_id`, `usuario_nome`, `usuario_senha`, `usuario_email`, `usuario_criado_em`, `usuario_is_ativo`, `usuario_is_admin`) VALUES
+(1, 'Admin', 'a', 'admin@detran.com', '2023-06-01 07:30:00', 1, 1),
+(2, 'Paulo Henrique', 'a', 'paulo.henrique@detran.com', '2023-06-01 07:45:00', 1, 0),
+(3, 'Anderson Silva', 'a', 'anderson.silva@detran.com', '2023-06-01 08:00:00', 0, 0);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `chamados`
+--
+ALTER TABLE `chamados`
+  ADD CONSTRAINT `fk_chamados_setores1` FOREIGN KEY (`setor_id_fk`) REFERENCES `setores` (`setor_id`),
+  ADD CONSTRAINT `fk_chamados_usuarios` FOREIGN KEY (`usuario_id_fk`) REFERENCES `usuarios` (`usuario_id`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-07-24  8:24:09
