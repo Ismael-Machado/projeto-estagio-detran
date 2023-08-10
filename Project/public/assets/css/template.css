@@ -146,8 +146,79 @@ body.hide-sidebar aside.sidebar {
     display: none;
 }
 
+aside.sidebar .sidebar-widgets {
+    position: sticky;
+    bottom: 10px;
+}
+
+aside.sidebar .sidebar-widget {
+    display: flex;
+    align-items: center;
+}
+
+aside.sidebar .icon {
+    font-size: 4.5rem;
+}
+
+aside.sidebar .icon-alarm {
+    font-size: 3.5rem;
+    margin: 0px 13px 0px 0px;
+}
+
+aside.sidebar .sidebar-widget .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.division {
+    widows: 80%;
+    border: solid 1px #eee;
+}
+
+aside.sidebar .info .main {
+    font-size: 2.5rem;
+    height: 52px;
+}
+
 main.content {
+    background-color: #fff;
     grid-area: content;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2);
+}
+
+main.content .content-title {
+    display: flex;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ccc;
+}
+
+main.content .content-title .icon {
+    font-size: 3rem;
+}
+
+main.content .content-title h1 {
+    font-size: 1.8rem;
+    color: #444;
+    font-weight: 300;
+    margin: 0;
+}
+
+main.content .content-title h2 {
+    font-size: 1.2rem;
+    color: #777;
+    font-weight: 300;
+    margin: 0;
+}
+
+main.content .card-header h3 {
+    margin: 0;
+    padding: 0;
 }
 
 footer.footer {
@@ -172,3 +243,9 @@ footer.footer img.img-logo-footer-detran {
     width: 210px;
 }
 
+footer.footer .nome-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

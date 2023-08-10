@@ -39,4 +39,29 @@
             </li>
         </ul>
     </nav>
+    <div class="sidebar-widgets">
+        <div class="sidebar-widget">
+            <i class="icon icofont-check text-success"></i>
+            <div class="info">
+                <span class="main text-success">
+                    8
+                </span>
+                <span class="label text-muted">
+                    Chamados atendidos
+                </span>
+            </div>    
+        </div>
+        <div class="division my-3"></div>
+        <div class="sidebar-widget">
+            <i class="icon-alarm icofont-ui-alarm text-danger"></i>
+            <div class="info">
+                <span class="main text-danger">
+                    1
+                </span>
+                <span class="label text-muted">
+                    Chamados em espera
+                </span>
+            </div>    
+        </div>
+    </div>
 </aside>

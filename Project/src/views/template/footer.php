@@ -2,7 +2,10 @@
     <figure class="img-footer"> 
         <img src="/assets/img/logoGovernoAc.png" alt="logo do governo do acre" class="img-logo-footer-governo">
     </figure>
-    <span class="text-footer">Sistema de Gestão de Chamados - Divisão de Tecnologia da Informação</span>
+    <div class="nome-footer">
+        <span>Sistema de Gestão de Chamados</span>
+        <span>Divisão de Tecnologia da Informação</span>
+    </div>
     <figure class="img-footer"> 
         <img src="/assets/img/logoDetranAc.png" alt="logo do detran acre" class="img-logo-footer-detran">
     </figure>
