@@ -71,7 +71,7 @@ header.header .dropdown-content {
     position: absolute;
     min-width: 100%;
     background-color: #f9f9f9;
-    padding: 10px 0px;
+    padding: 12px 0px;
     z-index: 100;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, .2);
 }
@@ -83,11 +83,16 @@ header.header .dropdown:hover .dropdown-content {
 header.header .dropdown-content ul {
     list-style: none;
     padding-left: 0;
+    margin-bottom: 0;
 }
 
 header.header .dropdown-content a {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: #222;
+    padding: 3px;
+    font-size: 1.2rem;
 }
 
 header.header .dropdown-content a:hover {
@@ -103,7 +108,38 @@ header.header .dropdown:hover {
 }
 
 aside.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     grid-area: sidebar;
+    box-shadow: -5px 0px 25px 1px rgba(0, 0, 0, 0.4);
+    background-color: #fff;
+}
+
+aside.sidebar .menu {
+    width: 100%;
+    flex-grow: 1;
+}
+
+aside.sidebar .menu ul.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside.sidebar .menu li.nav-item {
+    margin: 0;
+    padding: 10px 0px 10px 40px;
+}
+
+aside.sidebar .menu li.nav-item:hover {
+    background-color:  rgba(0, 0, 0, .1);
+}
+
+aside.sidebar .menu li.nav-item a {
+    font-size: 1.1rem;
+    color: #555;
+    text-decoration: none;
 }
 
 body.hide-sidebar aside.sidebar {
@@ -115,6 +151,24 @@ main.content {
 }
 
 footer.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 25px 0px 25px;
+    background-color: #222;
+    color: #fff;
     grid-area: footer;
+}
+
+footer.footer figure.img-footer {
+    padding-top: 16px;
+}
+
+footer.footer img.img-logo-footer-governo {
+    width: 174px;
+}
+
+footer.footer img.img-logo-footer-detran {
+    width: 210px;
 }
 
