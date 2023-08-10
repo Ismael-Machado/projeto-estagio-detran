@@ -27,6 +27,12 @@
             </li>
             <li class="nav-item">
                 <a href="#">
+                    <i class="icofont-company mr-2"></i>
+                    Lista Setores
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
                     <i class="icofont-users mr-2"></i>
                     Lista Usuários
                 </a>
