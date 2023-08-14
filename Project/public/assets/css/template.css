@@ -103,6 +103,12 @@ header.header .dropdown:hover {
     background-color: rgba(0, 0, 0, .1);
 }
 
+header.header .avatar {
+    height: 75%;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
 .icofont-megaphone {
     font-size: 2rem;
 }
