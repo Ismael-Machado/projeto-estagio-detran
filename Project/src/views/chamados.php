@@ -1,11 +1,11 @@
 <main class="content">
-    <div class="content-title mb-4">
-        <i class="icon icofont-support-faq mr-2"></i>
-        <div>
-            <h1>Abrir chamado</h1>
-            <h2>Realize a solicitação de novo chamado</h2>
-        </div>
-    </div> 
+    <?php 
+        renderTitle(
+            'Abrir chamado',
+            'Realize a solicitação de novo chamado',
+            'icofont-support-faq'
+        );
+    ?> 
     <div class="card">
         <div class="card-header">
             <h3>Formulário</h3>
