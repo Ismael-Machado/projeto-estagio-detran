@@ -2,13 +2,13 @@
     <nav class="menu mt-3">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="#">
+                <a href="lista_chamados.php">
                     <i class="icofont-search-document mr-2"></i>
                     Lista Chamados
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#">
+                <a href="chamados.php">
                     <i class="icofont-plus-circle mr-2"></i>
                     Novo Chamado
                 </a>
