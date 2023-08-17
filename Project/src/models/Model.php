@@ -63,6 +63,18 @@ class Model {
         }
     }
 
+    public function save() {
+        $sql = "INSERT INTO " . static::$tableName . " ("
+        . implode(",", static::$columns) . ") VALUES (";
+        foreach(static::$columns as $col) {
+            $sql .= static::getFormatedValue($this->$col) . ",";
+        }
+
+        $sql[strlen($sql) - 1] = ')';
+        $id = Database::executeSQL($sql);
+        $this->id = $id;
+    }
+
     //refactoring code 
     //função que serve para tratar os filtros(cláusulas) do select da função getSelect 
     private static function getFilters($filters) {

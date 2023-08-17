@@ -70,7 +70,7 @@
             chama o controller de confirmação de inserção e carrega na view a 
             confirmação de abertura do chamado com o número do chamado para 
             posterior pesquisa -->
-            <a href="???" class="btn btn-success btn-lg">
+            <a href="salvar_chamado.php" class="btn btn-success btn-lg">
                 <i class="icofont-check mr-1"></i>
                 Confirma
             </a>
