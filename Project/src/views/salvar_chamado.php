@@ -7,4 +7,8 @@
         );
     ?>
 
+    <div>
+        <?= var_dump($_POST) ?>
+    </div>
+
 </main>    

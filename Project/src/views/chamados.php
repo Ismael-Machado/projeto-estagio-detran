@@ -11,6 +11,7 @@
             <h3>Formulário</h3>
             <p class="mb-0">Preencha os dados corretamente</p>
         </div>
+        <form action="salvar_chamado.php" method="post">
         <div class="card-body">
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -31,7 +32,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="setor">Setor</label>
-                    <select class="form-select form-control" aria-label="Default select example">
+                    <select id="setor" name="chamado_setor" class="form-select form-control" aria-label="Default select example">
                         <option selected>Selecione o setor</option>
                         <option value="1">Administração</option>
                         <option value="2">Jurídico</option>
@@ -42,8 +43,8 @@
                     </div>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="email">Problema</label>
-                    <select class="form-select form-control" aria-label="Default select example">
+                    <label for="problema">Problema</label>
+                    <select id="problema" name="chamado_assunto" class="form-select form-control" aria-label="Default select example">
                         <option selected>Selecione a categoria do problema</option>
                         <option value="1">Internet</option>
                         <option value="2">Monitor</option>
@@ -57,7 +58,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="descricao">Descrição</label>
-                    <input type="text" id="descricao" name="chamado_email_solicitante" 
+                    <input type="text" id="descricao" name="chamado_descricao" 
                     placeholder="Forneça mais detalhes do problema, se desejar" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
@@ -70,10 +71,12 @@
             chama o controller de confirmação de inserção e carrega na view a 
             confirmação de abertura do chamado com o número do chamado para 
             posterior pesquisa -->
-            <a href="salvar_chamado.php" class="btn btn-success btn-lg">
+            <!-- <a href="salvar_chamado.php" class="btn btn-success btn-lg">
                 <i class="icofont-check mr-1"></i>
                 Confirma
-            </a>
+            </a> -->
+            <button class="btn btn-success btn-lg">Salvar</button>
         </div>
+    </form>
     </div>
 </main>
