@@ -67,12 +67,18 @@ class Model {
         $sql = "INSERT INTO " . static::$tableName . " ("
         . implode(",", static::$columns) . ") VALUES (";
         foreach(static::$columns as $col) {
+            // o $this->$col chama o atributo da classe com aquele nome 
+            // definido em columns e guardado em values. Quando o objeto é 
+            // criado os valores dos atributos são inseridos com base em 
+            // chaves e valores em values, então com base no nome da col 
+            // é buscado uma chave em values com o mesmo nome e retornado 
+            // o valor dentro daquela chave (entendimento meu)
             $sql .= static::getFormatedValue($this->$col) . ",";
         }
 
         $sql[strlen($sql) - 1] = ')';
         $id = Database::executeSQL($sql);
-        //esse id aqui precisa ser o chamado_id 
+        //esse id aqui precisa ser o chamado_id, muito possivelmente
         $this->id = $id;
     }
 
@@ -83,6 +89,7 @@ class Model {
         }
 
         $sql[strlen($sql) -1] = ' ';
+        //esse id é o id da instância 
         $sql .= "WHERE id = {$this->id}";
         Database::executeSQL($sql);
     }
