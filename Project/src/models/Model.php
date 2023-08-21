@@ -90,6 +90,8 @@ class Model {
 
         $sql[strlen($sql) -1] = ' ';
         //esse id é o id da instância 
+        //provelmente vou ter que por o id específico de cada estância  ou 
+        //alterar todas as tabelas e atributos para serem apenas id (oq é mais fácil de implementar)
         $sql .= "WHERE id = {$this->id}";
         Database::executeSQL($sql);
     }

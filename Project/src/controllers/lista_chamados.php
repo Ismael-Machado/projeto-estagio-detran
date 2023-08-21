@@ -1,4 +1,7 @@
 <?php 
 session_start();
 requireValidSession();
-loadTemplateView('lista_chamados', ['chamados' => 'teste']);
+
+$chamados = Chamados::get();
+
+loadTemplateView('lista_chamados', ['chamados' => $chamados]);
