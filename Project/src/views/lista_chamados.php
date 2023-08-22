@@ -29,7 +29,20 @@
                         <td><?= $chamado->chamado_assunto ?></td>
                         <td><?= $chamado->chamado_descricao ?></td>
                         <td><?= $chamado->chamado_status ?></td>
-                        <td></td>
+                        <td>
+                            <!-- abrir um if em php pra testar o status do chamado
+                            se for em atendimento, mostrar o botão "finalizar" -->
+                            <a href="#?update=<?= $chamado->chamado_id ?>" class="btn btn-secondary rounded-bottom">
+                                <i class="icofont-architecture-alt"></i>
+                                Atender
+                            </a>
+                            <!-- abrir condicional aqui pra testar se o user da session é admin
+                            se não for admin, não mostrar esse button  -->
+                            <a href="#?update=<?= $chamado->chamado_id ?>" class="btn btn-warning rounded-bottom">
+                                <i class="icofont-edit"></i>
+                                Editar
+                            </a>
+                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
