@@ -14,11 +14,16 @@ class Chamados extends Model {
         'usuario_id_fk',
         'setor_id_fk',
     ];
-    
+
+        
     // função atender chamado que é invocada quando o usuário logado 
     // clica em atender chamado. Se o usuário for admin, poderá escolher 
     // qual usuário do banco vai atender o chamado. 
     public function atenderChamado() {
 
+    }
+
+    public function insert() {
+        
     }
 }
