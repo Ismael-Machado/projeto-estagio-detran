@@ -8,8 +8,9 @@
     ?>
 
     <div>
-        <?= var_dump($_POST); echo '<br>' ?>
-        <?= var_dump($chamado->chamado_assunto) ?>
+        
+
+        <p>Chamado <?= $id ?> aberto com sucesso</p>
     </div>
 
 </main>    

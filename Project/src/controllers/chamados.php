@@ -2,4 +2,8 @@
 session_start();
 requireValidSession();
 
-loadTemplateView('chamados');
+loadModel('Setores');
+
+$setores = Setores::get();
+
+loadTemplateView('chamados', ['setores' => $setores]);

@@ -79,7 +79,7 @@ class Model {
         $sql[strlen($sql) - 1] = ')';
         $id = Database::executeSQL($sql);
         //esse id aqui precisa ser o chamado_id, muito possivelmente
-        $this->id = $id;
+        return $id;
     }
 
     public function update() {

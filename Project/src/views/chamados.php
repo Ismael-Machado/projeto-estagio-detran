@@ -33,10 +33,15 @@
                 <div class="form-group col-md-6">
                     <label for="setor">Setor</label>
                     <select id="setor" name="chamado_setor" class="form-select form-control" aria-label="Default select example">
-                        <option selected>Selecione o setor</option>
-                        <option value="1">Administração</option>
+                        <option selected>Selecione o setor</option> 
+                        <?php foreach($setores as $setor): ?>
+                        <option value="<?= $setor->setor_id ?>"><?= $setor->setor_nome ?></option>
+                        <!-- <option value="2">Jurídico</option>
+                        <option value="3">Atendimento</option>    -->
+                        <!-- <option value="1">Administração</option>
                         <option value="2">Jurídico</option>
-                        <option value="3">Atendimento</option>
+                        <option value="3">Atendimento</option>    -->
+                        <?php endforeach ?>                     
                     </select>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
@@ -80,3 +85,6 @@
     </form>
     </div>
 </main>
+
+<?= print_r($setores) ?>
+<?= var_dump($setores) ?>

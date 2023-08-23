@@ -1,7 +1,7 @@
 <?php 
 
 class Setores extends Model {
-    protected static $tableName = 'usuarios';
+    protected static $tableName = 'setores';
     protected static $columns = [
         'setor_id',
         'setor_nome',
