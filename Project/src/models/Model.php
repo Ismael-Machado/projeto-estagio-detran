@@ -29,6 +29,10 @@ class Model {
         $this->values[$key] = $value;
     }
 
+    public function getValues() {
+        return $this->values;
+    }
+
     //pega o resultado bruto de uma consulta e retorna objetos associados ao array de resultados
     public static function get($filters = [], $columns = '*') {
         $objects = [];

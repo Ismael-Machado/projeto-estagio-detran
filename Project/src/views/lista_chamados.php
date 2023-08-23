@@ -19,6 +19,7 @@
                     <th>Solicitante</th>
                     <th>Assunto</th>
                     <th>Descrição</th>
+                    <th>Atendente</th>
                     <th>Status</th>
                     <th>Ações</th>
                 </thead>
@@ -28,11 +29,13 @@
                         <td><?= $chamado->chamado_solicitante ?></td>
                         <td><?= $chamado->chamado_assunto ?></td>
                         <td><?= $chamado->chamado_descricao ?></td>
+                        <!-- necessário resolver essa parte de apresentação do atendente -->
+                        <td><?= $chamado->usuario_id_fk = 1 ? "Não atribuído" : "Paulinho" ?></td>
                         <td><?= $chamado->chamado_status ?></td>
                         <td>
                             <!-- abrir um if em php pra testar o status do chamado
                             se for em atendimento, mostrar o botão "finalizar" -->
-                            <a href="#?update=<?= $chamado->chamado_id ?>" class="btn btn-secondary rounded-bottom">
+                            <a href="atender_chamado.php?update=<?= $chamado->chamado_id ?>" class="btn btn-secondary rounded-bottom">
                                 <i class="icofont-architecture-alt"></i>
                                 Atender
                             </a>
