@@ -100,7 +100,7 @@ class Model {
     //     Database::executeSQL($sql);
     // }
 
-    public function update() {
+    public function update($id) {
         $sql = "UPDATE " . static::$tableName . " SET ";
         foreach(static::$columns as $col) {
             $sql .= " ${col} = " . static::getFormatedValue($this->$col) . ",";
@@ -110,7 +110,7 @@ class Model {
         //esse id é o id da instância 
         //provelmente vou ter que por o id específico de cada estância  ou 
         //alterar todas as tabelas e atributos para serem apenas id (oq é mais fácil de implementar)
-        $sql .= "WHERE id = {$this->chamado_id}";
+        $sql .= "WHERE chamado_id = {$id}";
         Database::executeSQL($sql);
     }
 

@@ -8,7 +8,7 @@ if(count($_POST) > 0){
     try {
         $chamado = new Chamados($_POST); 
         if($chamado->chamado_id) {
-            $chamado->update();
+            $chamado->update($chamado->chamado_id);
         }
         
     } catch(Exception $e) {
