@@ -11,31 +11,53 @@
             <h3>Atender</h3>
             <p class="mb-0">Confirme após selecionar o atendente</p>
         </div>
-        <form action="salvar_chamado.php" method="post">
+        <form action="atualizar_chamado.php" method="post">
         <div class="card-body">
             <div class="form-row">
+                <input type="hidden" name="chamado_id" value="<?= $_POST['chamado_id'] ?>">
+                <input type="hidden" name="chamado_setor" value="<?= $_POST['chamado_setor'] ?>">
+                
+                
+
                 <div class="form-group col-md-6">
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="chamado_solicitante" placeholder="Informe seu nome" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $chamadoData->chamado_solicitante ?>" readonly>
+                    <label for="nome">Nome solicitante</label>
+                    <input type="text" id="nome" name="chamado_solicitante" placeholder="Informe seu nome" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_solicitante'] ?>" readonly>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
+                <input type="hidden" name="chamado_email_solicitante" value="<?= $_POST['chamado_email_solicitante'] ?>">
                 <div class="form-group col-md-6">
-                    <label for="email">E-mail</label>
-                    <input type="text" id="email" name="chamado_email_solicitante" placeholder="Informe seu e-mail" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <label for="email">Problema</label>
+                    <input type="text" id="email" name="chamado_assunto" placeholder="Informe seu e-mail" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_assunto'] ?>" readonly>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
             </div>    
+            
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="setor">Setor</label>
-                    <select id="setor" name="chamado_setor" class="form-select form-control" aria-label="Default select example">
-                        <option selected>Selecione o setor</option> 
-                        <?php foreach($setores as $setor): ?>
-                        <option value="<?= $setor->setor_id ?>"><?= $setor->setor_nome ?></option>
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao" name="chamado_descricao" 
+                    placeholder="Forneça mais detalhes do problema, se desejar" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_descricao'] ?>" readonly>
+                    <div class="invalid-feedback">
+                        <?= $errors[''] ?>
+                    </div>
+                </div>
+            </div> 
+
+            <input type="hidden" name="chamado_criado_em" value="<?= $_POST['chamado_criado_em'] ?>">
+            <input type="hidden" name="chamado_status" value="Em atendimento">
+           
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="user">Usuários</label>
+                    <select id="user" name="usuario_id_fk" class="form-select form-control" aria-label="Default select example">
+                        <option selected>Selecione o atendente</option> 
+                        <?php foreach($usuarios as $user): ?>
+                        <option value="<?= $user->usuario_id ?>"><?= $user->usuario_nome ?></option>
                         <!-- <option value="2">Jurídico</option>
                         <option value="3">Atendimento</option>    -->
                         <!-- <option value="1">Administração</option>
@@ -47,29 +69,11 @@
                         <?= $errors[''] ?>
                     </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="problema">Problema</label>
-                    <select id="problema" name="chamado_assunto" class="form-select form-control" aria-label="Default select example">
-                        <option selected>Selecione a categoria do problema</option>
-                        <option value="1">Internet</option>
-                        <option value="2">Monitor</option>
-                        <option value="3">Outro</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        <?= $errors[''] ?>
-                    </div>
-                </div>
-            </div>    
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="descricao">Descrição</label>
-                    <input type="text" id="descricao" name="chamado_descricao" 
-                    placeholder="Forneça mais detalhes do problema, se desejar" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
-                    <div class="invalid-feedback">
-                        <?= $errors[''] ?>
-                    </div>
-                </div>
-            </div>    
+            </div>  
+
+            <input type="hidden" name="setor_id_fk" value="<?= $_POST['setor_id_fk'] ?>">
+            
+            
         </div>
         <div class="card-footer d-flex justify-content-center">
             <!-- se todos os dados passarem pela validação, o href desse butão link
@@ -80,10 +84,12 @@
                 <i class="icofont-check mr-1"></i>
                 Confirma
             </a> -->
-            <button class="btn btn-success btn-lg">Salvar</button>
+            <button class="btn btn-success btn-lg"><i class="icofont-check mr-1"></i>Confirmar</button>
         </div>
     </form>
     </div>
 </main>
 
-<?= var_dump($chamadoData) ?>
+
+<?= var_dump($usuarios) ?>
+<?= var_dump($_POST) ?>
