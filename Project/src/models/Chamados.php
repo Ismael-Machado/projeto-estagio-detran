@@ -54,7 +54,7 @@ class Chamados extends Model {
         }
 
         if(!$this->usuario_id_fk) {
-            $this->usuario_id_fk = 1;
+            $this->usuario_id_fk = null;
         } 
 
 

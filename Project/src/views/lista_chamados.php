@@ -31,14 +31,22 @@
                         <td><?= $chamado->chamado_descricao ?></td>
                         <!-- necessário resolver essa parte de apresentação do atendente -->
                         <td><?= $chamado->usuario_id_fk = 1 ? "Não atribuído" : "Paulinho" ?></td>
-                        <td><?= $chamado->chamado_status ?></td>
+                        <!-- transformar condicional da classe em uma única estrutura -->
+                        <td class=<?= $chamado->chamado_status == "Em atendimento" ? "table-primary" : "" ?><?= $chamado->chamado_status == "Aberto" ? "table-warning" : ""?>><?= $chamado->chamado_status ?></td>
                         <td>
                             <!-- abrir um if em php pra testar o status do chamado
                             se for em atendimento, mostrar o botão "finalizar" -->
+                            <?php if($chamado->chamado_status == "Em atendimento"): ?> 
+                            <a href="#?update=<?= $chamado->chamado_id ?>" class="btn btn-danger rounded-bottom">
+                                <i class="icofont-check"></i>
+                                Finalizar
+                            </a>
+                            <?php else: ?>    
                             <a href="atender_chamado.php?update=<?= $chamado->chamado_id ?>" class="btn btn-secondary rounded-bottom">
                                 <i class="icofont-architecture-alt"></i>
                                 Atender
                             </a>
+                            <?php endif ?>
                             <!-- abrir condicional aqui pra testar se o user da session é admin
                             se não for admin, não mostrar esse button  -->
                             <a href="#?update=<?= $chamado->chamado_id ?>" class="btn btn-warning rounded-bottom">
