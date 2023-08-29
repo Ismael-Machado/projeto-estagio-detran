@@ -1,4 +1,5 @@
 <?php 
+loadModel('Setores');
 
 class Chamados extends Model {
     protected static $tableName = 'chamados';
@@ -24,17 +25,12 @@ class Chamados extends Model {
     }
 
     public function insert() {
-        if($this->chamado_setor == 1) {
-            $this->setor_id_fk = 1;
-            $this->chamado_setor = "Divisão de Arquivo";
-        } elseif($this->chamado_setor == 2) {
-            $this->setor_id_fk = 2;
-            $this->chamado_setor = "Divisão de Serviços Gerais";
-        } elseif($this->chamado_setor == 3) {
-            $this->setor_id_fk = 3;
-            $this->chamado_setor = "Divisão de Almoxarifado";  
-        }
+        $nomeSetor = $this->getSetor($this->chamado_setor);
+        $this->setor_id_fk = $this->chamado_setor;
+        $this->chamado_setor = $nomeSetor;
 
+        
+        //fazer o assunto ser dinâmico
         if($this->chamado_assunto == 1) {
             $this->chamado_assunto = "Internet";
         } elseif($this->chamado_assunto == 2) {
@@ -44,9 +40,9 @@ class Chamados extends Model {
         }
 
         if(!$this->chamado_criado_em) {
-            // $data = new DateTime("now");
-            //arrumar essa parte do date 
-            $this->chamado_criado_em = "2023-08-23 09:30:00";
+            $data = new DateTime('now');
+            $dataFormatada = $data->format('Y-m-d H:i:s');
+            $this->chamado_criado_em = $dataFormatada;
         }
 
         if(!$this->chamado_status) {
@@ -63,5 +59,15 @@ class Chamados extends Model {
 
     public function setId($id) {
         $this->chamado_id = $id;
+    }
+
+    public function getSetor($setorId) {
+       $setor = Setores::getOne(['setor_id' => $setorId]);
+
+       if($setor) {
+        return $setor->setor_nome;
+       } else {
+        "Setor não encontrado";
+       }
     }
 }

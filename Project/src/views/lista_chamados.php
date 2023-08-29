@@ -30,7 +30,13 @@
                         <td><?= $chamado->chamado_assunto ?></td>
                         <td><?= $chamado->chamado_descricao ?></td>
                         <!-- necessário resolver essa parte de apresentação do atendente -->
-                        <td><?= $chamado->usuario_id_fk = 1 ? "Não atribuído" : "Paulinho" ?></td>
+                        <?php foreach($usuarios as $usuario) {
+                            if($chamado->usuario_id_fk == $usuario->usuario_id) {
+                                $nome_usuario = $usuario->usuario_nome;
+                            }
+                        }
+                        ?>
+                        <td><?= $chamado->usuario_id_fk == null ? "Não atribuído" : $nome_usuario ?></td>
                         <!-- transformar condicional da classe em uma única estrutura -->
                         <td class=<?= $chamado->chamado_status == "Em atendimento" ? "table-primary" : "" ?><?= $chamado->chamado_status == "Aberto" ? "table-warning" : ""?>><?= $chamado->chamado_status ?></td>
                         <td>
@@ -71,3 +77,5 @@
         </div>
     </div>
 </main>
+
+<?= print_r($nome_usuario) ?>
