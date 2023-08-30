@@ -227,6 +227,22 @@ main.content .card-header h3 {
     padding: 0;
 }
 
+main.content .confirmacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100hv;
+    width: 100%;
+}
+
+main.content .confirmacao p {
+    font-size: 70px;
+}
+
+main.content .confirmacao p span {
+    color: #b13333;
+}
+
 footer.footer {
     display: flex;
     justify-content: space-between;

@@ -3,14 +3,14 @@
         renderTitle(
             'Chamado Solicitado',
             'Seu chamado foi aberto, aguarde o atendimento',
-            'icofont-support-faq'
+            'icofont-thumbs-up'
         );
     ?>
 
-    <div>
+    <div class="confirmacao">
         
 
-        <p>Chamado <?= $id ?> aberto com sucesso</p>
+        <p>Chamado <span><?= $id ?></span> aberto com sucesso</p>
     </div>
 
 </main>    

@@ -57,6 +57,14 @@ class Chamados extends Model {
         return parent::insert();
     }
 
+    public function update($id) {
+        $nomeSetor = $this->getSetor($this->chamado_setor);
+        $this->setor_id_fk = $this->chamado_setor;
+        $this->chamado_setor = $nomeSetor;
+
+        return parent::update($id);
+    }
+
     public function setId($id) {
         $this->chamado_id = $id;
     }

@@ -1,9 +1,9 @@
 <main class="content">
     <?php 
         renderTitle(
-            'Chamado Solicitado',
-            'Seu chamado foi aberto, aguarde o atendimento',
-            'icofont-support-faq'
+            'Chamado atualizado',
+            'Dados atualizados com sucesso',
+            'icofont-thumbs-up'
         );
     ?>
 

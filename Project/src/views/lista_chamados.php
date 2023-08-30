@@ -3,7 +3,7 @@
         renderTitle(
             'Lista Chamados',
             'Vizualize a lista de chamados do dia',
-            'icofont-smart-search'
+            'icofont-list'
         );
 
         include(TEMPLATE_PATH . "/messages.php")
@@ -55,7 +55,7 @@
                             <?php endif ?>
                             <!-- abrir condicional aqui pra testar se o user da session é admin
                             se não for admin, não mostrar esse button  -->
-                            <a href="#?update=<?= $chamado->chamado_id ?>" class="btn btn-warning rounded-bottom">
+                            <a href="editar_chamado.php?update=<?= $chamado->chamado_id ?>" class="btn btn-warning rounded-bottom">
                                 <i class="icofont-edit"></i>
                                 Editar
                             </a>
