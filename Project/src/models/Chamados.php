@@ -56,8 +56,9 @@ class Chamados extends Model {
 
         return parent::insert();
     }
-
-    public function update($id) {
+    
+    //ao invés de chamar uma função diferente, pode ser apenas uma condicional 
+    public function editar($id) {
         $nomeSetor = $this->getSetor($this->chamado_setor);
         $this->setor_id_fk = $this->chamado_setor;
         $this->chamado_setor = $nomeSetor;

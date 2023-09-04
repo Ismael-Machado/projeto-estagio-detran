@@ -4,15 +4,11 @@ requireValidSession();
 
 $exception = null;
 
-$chamadoData = [];
-
 if(count($_POST) > 0){
     try {
         $chamado = new Chamados($_POST); 
         if($chamado->chamado_id) {
-            $chamado->update($chamado->chamado_id);
-            $chamadoData = $chamado->getValues();
-            $_POST = $chamadoData;
+            $chamado->editar($chamado->chamado_id);
         }
         
     } catch(Exception $e) {
@@ -20,9 +16,7 @@ if(count($_POST) > 0){
     }
 }
 
-
-
-loadTemplateView('atualizar_chamado', $_POST);
+loadTemplateView('atualizar_editar_chamado');
 
 print_r($_POST);
 echo '<br>';

@@ -8,9 +8,14 @@
     ?>
 
     <div>
-        
         <!-- passar aqui informações do chamado -->
-        <p>Atendimento iniciado ou chamado atualizado</p>
+        <?php if($_POST['chamado_status'] == "Em atendimento"): ?>
+        <p>Atendimento iniciado</p>
+        <?php elseif($_POST['chamado_status'] == "Finalizado"): ?>
+        <p>Atendimento finalizado</p>
+        <?php endif ?>
     </div>
 
 </main>    
+
+<?= print_r($_POST) ?>

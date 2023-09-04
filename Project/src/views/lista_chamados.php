@@ -38,16 +38,16 @@
                         ?>
                         <td><?= $chamado->usuario_id_fk == null ? "Não atribuído" : $nome_usuario ?></td>
                         <!-- transformar condicional da classe em uma única estrutura -->
-                        <td class=<?= $chamado->chamado_status == "Em atendimento" ? "table-primary" : "" ?><?= $chamado->chamado_status == "Aberto" ? "table-warning" : ""?>><?= $chamado->chamado_status ?></td>
+                        <td class=<?= $chamado->chamado_status == "Em atendimento" ? "table-primary" : "" ?><?= $chamado->chamado_status == "Aberto" ? "table-warning" : ""?><?= $chamado->chamado_status == "Finalizado" ? "table-info" : ""?>><?= $chamado->chamado_status ?></td>
                         <td>
                             <!-- abrir um if em php pra testar o status do chamado
                             se for em atendimento, mostrar o botão "finalizar" -->
                             <?php if($chamado->chamado_status == "Em atendimento"): ?> 
-                            <a href="#?update=<?= $chamado->chamado_id ?>" class="btn btn-danger rounded-bottom">
+                            <a href="finalizar_chamado.php?update=<?= $chamado->chamado_id ?>" class="btn btn-danger rounded-bottom">
                                 <i class="icofont-check"></i>
                                 Finalizar
                             </a>
-                            <?php else: ?>    
+                            <?php elseif($chamado->chamado_status == "Aberto"): ?>    
                             <a href="atender_chamado.php?update=<?= $chamado->chamado_id ?>" class="btn btn-secondary rounded-bottom">
                                 <i class="icofont-architecture-alt"></i>
                                 Atender

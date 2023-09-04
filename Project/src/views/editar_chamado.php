@@ -3,7 +3,7 @@
         renderTitle(
             'Editar chamado',
             'Mantenha os dados consistentes',
-            'icofont-file-check'
+            'icofont-check'
         );
     ?> 
     <div class="card">
@@ -11,10 +11,10 @@
             <h3>Editar</h3>
             <p class="mb-0">Confirme após modificar as informações</p>
         </div>
-        <form action="atualizar_chamado.php" method="post">
+        <form action="atualizar_editar_chamado.php" method="post">
         <div class="card-body">
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-2">
                     <label for="id">Código chamado</label>
                     <input type="text" id="id" name="chamado_id"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_id'] ?>" readonly>
                     <div class="invalid-feedback">
