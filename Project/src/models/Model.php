@@ -107,10 +107,13 @@ class Model {
         }
 
         $sql[strlen($sql) -1] = ' ';
+
+        $class = get_called_class();
+        $class = $this->getClassId($class);
         //esse id é o id da instância 
         //provelmente vou ter que por o id específico de cada estância  ou 
         //alterar todas as tabelas e atributos para serem apenas id (oq é mais fácil de implementar)
-        $sql .= "WHERE chamado_id = {$id}";
+        $sql .= "WHERE ". $class ." = {$id}";
         Database::executeSQL($sql);
     }
 
@@ -135,6 +138,18 @@ class Model {
             return "'${value}'";
         } else {
             return $value;
+        }
+    }
+
+    private static function getClassId ($class) {
+        if($class == "Chamados") {
+            return "chamado_id";
+        } elseif($class == "Setores") {
+            return "setor_id";
+        } elseif($class == "User") {
+            return "usuario_id";
+        } else {
+            return "id";
         }
     }
 }

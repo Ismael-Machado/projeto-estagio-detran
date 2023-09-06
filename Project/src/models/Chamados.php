@@ -56,6 +56,7 @@ class Chamados extends Model {
 
         return parent::insert();
     }
+
     
     //ao invés de chamar uma função diferente, pode ser apenas uma condicional 
     public function editar($id) {
