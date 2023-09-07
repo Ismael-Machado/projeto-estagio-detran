@@ -16,14 +16,14 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="usuario_nome" placeholder="Informe seu nome" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="nome" name="usuario_nome" placeholder="Informe o nome" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">E-mail</label>
-                    <input type="text" id="email" name="usuario_email" placeholder="Informe seu e-mail" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="email" name="usuario_email" placeholder="Informe o e-mail" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
@@ -39,22 +39,24 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="confirma_senha">Confirme a senha</label>
-                    <input type="text" id="confirma_senha" name="usuario_email" placeholder="Informe seu e-mail" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="confirma_senha" name="confirma_senha" placeholder="Confirme a senha" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
-            </div>    
+            </div>  
+            <input type="hidden" name="usuario_is_ativo" value="1">   
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="descricao">Descrição</label>
-                    <input type="text" id="descricao" name="chamado_descricao" 
-                    placeholder="Forneça mais detalhes do problema, se desejar" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="checkbox" id="administrador" name="usuario_is_admin" 
+                    class="<?= $errors[''] ? 'is-invalid' : '' ?> mr-2">
+                    <label for="administrador">Usuário administrador?</label>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
-            </div>    
+            </div>
+               
         </div>
         <div class="card-footer d-flex justify-content-center">
             <!-- se todos os dados passarem pela validação, o href desse butão link

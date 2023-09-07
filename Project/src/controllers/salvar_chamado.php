@@ -21,8 +21,8 @@ if(count($_POST) > 0){
     }
 }
 
-$data = new DateTime("now");
-$data->createFromFormat('Y-m-d H:i:s', "now");
+$data = new DateTime('now');
+$dataFormatada = $data->format('Y-m-d H:i:s');
 
 // $chamado = new Chamados([
 //     'chamado_id' => 1,

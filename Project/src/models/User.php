@@ -13,4 +13,20 @@ class User extends Model {
         'usuario_is_admin',
     ];
     
+    public function insert() {
+        $this->usuario_senha = password_hash($this->password, PASSWORD_DEFAULT);
+        $this->usuario_is_admin = $this->usuario_is_admin ? 1 : 0;
+        
+        if(!$this->usuario_criado_em) {
+            $data = new DateTime('now');
+            $dataFormatada = $data->format('Y-m-d H:i:s');
+            $this->usuario_criado_em = $dataFormatada;
+        }
+
+        return parent::insert();
+    }
+
+    public function setId($id) {
+        $this->usuario_id = $id;
+    }
 }
