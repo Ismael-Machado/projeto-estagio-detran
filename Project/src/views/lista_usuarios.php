@@ -32,7 +32,7 @@
                         <td class=<?= $usuario->usuario_is_ativo == 1 ? "table-primary" : "table-active" ?>><?= $usuario->usuario_is_ativo == 1 ? "Sim" : "Não" ?></td>
                         
                         <td>
-                            <a href="editar_usuario.php?update=<?= $chamado->chamado_id ?>" class="btn btn-warning rounded-bottom">
+                            <a href="editar_usuario.php?update=<?= $usuario->usuario_id ?>" class="btn btn-warning rounded-bottom">
                                 <i class="icofont-edit"></i>
                                 Editar
                             </a>
