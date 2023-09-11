@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group col-md-5">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="usuário_nome"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $usuario['usuario_nome'] ?>">
+                    <input type="text" id="nome" name="usuario_nome"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $usuario['usuario_nome'] ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
@@ -36,10 +36,11 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="usuario_senha" value="<?= $usuario['usuario_senha'] ?>">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="senha">Senha</label>
-                    <input type="text" id="senha" name="usuario_senha" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $usuario['usuario_senha'] ?>">
+                    <label for="nova_senha">Nova Senha</label>
+                    <input type="text" id="nova_senha" name="nova_senha" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
@@ -56,7 +57,9 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="data">Data de criação</label>
-                    <input type="date" id="data" name="usuario_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $data ?>">
+                    <!-- usando um type text temporariamente  -->
+                    <!-- <input type="date" id="data" name="usuario_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value=""> -->
+                    <input type="text" id="data" name="usuario_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $usuario['usuario_criado_em'] ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>

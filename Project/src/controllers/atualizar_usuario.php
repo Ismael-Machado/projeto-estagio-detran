@@ -23,3 +23,6 @@ if(count($_POST) > 0){
 
 
 loadTemplateView('atualizar_usuario', $_POST);
+
+// print_r($_POST);
+// print_r($usuario);

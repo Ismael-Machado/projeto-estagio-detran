@@ -7,8 +7,8 @@
         );
     ?>
 
-    <div>        
-        <p>Chamado atualizado com sucesso</p>
+    <div class="confirmacao">        
+        <p>Chamado <span>atualizado</span> com sucesso</p>
     </div>
 
 </main>    

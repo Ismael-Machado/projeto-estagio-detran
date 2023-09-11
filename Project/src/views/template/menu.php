@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#">
+                <a href="lista_setores.php">
                     <i class="icofont-company mr-2"></i>
                     Lista Setores
                 </a>

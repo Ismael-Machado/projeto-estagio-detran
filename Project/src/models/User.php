@@ -14,7 +14,7 @@ class User extends Model {
     ];
     
     public function insert() {
-        $this->usuario_senha = password_hash($this->password, PASSWORD_DEFAULT);
+        $this->usuario_senha = password_hash($this->usuario_senha, PASSWORD_DEFAULT);
         $this->usuario_is_admin = $this->usuario_is_admin ? 1 : 0;
         
         if(!$this->usuario_criado_em) {
@@ -24,6 +24,17 @@ class User extends Model {
         }
 
         return parent::insert();
+    }
+
+    public function update($id) {
+        $this->usuario_is_admin = $this->usuario_is_admin ? 1 : 0;
+        $this->usuario_is_ativo = $this->usuario_is_ativo ? 1 : 0;    
+
+        if($this->nova_senha) {
+            $this->usuario_senha = password_hash($this->nova_senha, PASSWORD_DEFAULT);
+        }
+
+        return parent::update($id);
     }
 
     public function setId($id) {
