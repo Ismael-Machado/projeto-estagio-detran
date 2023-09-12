@@ -31,7 +31,7 @@
             <div class="dropdown-content">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="#">
+                        <a href="editar_usuario.php?update=<?= $_SESSION['user']->usuario_id ?>">
                             <i class="icofont-user mr-2"></i>
                             Meu perfil
                         </a>

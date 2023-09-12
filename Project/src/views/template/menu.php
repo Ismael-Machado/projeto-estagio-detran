@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#">
+                <a href="relatorio_chamados.php">
                     <i class="icofont-presentation mr-2"></i>
                     Relatório Chamados
                 </a>
