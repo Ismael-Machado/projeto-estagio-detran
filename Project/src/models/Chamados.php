@@ -71,6 +71,36 @@ class Chamados extends Model {
         $this->chamado_id = $id;
     }
 
+    public static function getCountChamadosAtendidos() {
+        $result = Database::getResultFromQuery(
+            "SELECT count(chamado_id) 
+            FROM chamados
+            WHERE chamado_status = 'Finalizado' 
+            OR chamado_status = 'Em atendimento'"
+        );
+
+        return $result->fetch_assoc();
+    }
+
+    public static function getCountChamadosAbertos() {
+        $result = Database::getResultFromQuery(
+            "SELECT count(chamado_id) 
+            FROM chamados
+            WHERE chamado_status = 'Aberto'"
+        );
+
+        return $result->fetch_assoc();
+    }
+
+    public static function getTotalChamados() {
+        $result = Database::getResultFromQuery(
+            "SELECT count(chamado_id) 
+            FROM chamados"
+        );
+
+        return $result->fetch_assoc();
+    }
+
     public function getSetor($setorId) {
        $setor = Setores::getOne(['setor_id' => $setorId]);
 

@@ -64,6 +64,7 @@
                         <?= $errors[''] ?>
                     </div>
                 </div>
+                <?php if($_SESSION['user']->usuario_is_admin == 1): ?>
                 <div class="form-group col-md-3">
                     <label for="data">Ativo?</label>
                     <input type="checkbox" id="data" name="usuario_is_ativo" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $usuario['usuario_is_ativo'] == 1 ? 'checked' : ''?>>
@@ -78,8 +79,8 @@
                         <?= $errors[''] ?>
                     </div>
                 </div>
-
-            </div> 
+                <?php endif ?>    
+            </div>  
                        
         </div>
         <div class="card-footer d-flex justify-content-center">
