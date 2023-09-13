@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#">
+                <a href="filtro_chamados.php">
                     <i class="icofont-search-stock mr-2"></i>
                     Filtro Chamados
                 </a>
