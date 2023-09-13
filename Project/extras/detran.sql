@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 31-Jul-2023 às 16:01
+-- Tempo de geração: 13/09/2023 às 01:37
 -- Versão do servidor: 8.0.33
--- versão do PHP: 8.0.26
+-- Versão do PHP: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `chamados`
+-- Estrutura para tabela `chamados`
 --
 
 DROP TABLE IF EXISTS `chamados`;
@@ -35,17 +35,17 @@ CREATE TABLE IF NOT EXISTS `chamados` (
   `chamado_email_solicitante` varchar(255) NOT NULL,
   `chamado_assunto` varchar(100) NOT NULL,
   `chamado_descricao` varchar(255) NOT NULL,
-  `chamado_criado_em` datetime NOT NULL,
+  `chamado_criado_em` datetime DEFAULT NULL,
   `chamado_status` varchar(100) NOT NULL,
-  `usuario_id_fk` bigint NOT NULL,
+  `usuario_id_fk` bigint DEFAULT NULL,
   `setor_id_fk` bigint NOT NULL,
   PRIMARY KEY (`chamado_id`),
   KEY `fk_chamados_usuarios_idx` (`usuario_id_fk`),
   KEY `fk_chamados_setores1_idx` (`setor_id_fk`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Extraindo dados da tabela `chamados`
+-- Despejando dados para a tabela `chamados`
 --
 
 INSERT INTO `chamados` (`chamado_id`, `chamado_setor`, `chamado_solicitante`, `chamado_email_solicitante`, `chamado_assunto`, `chamado_descricao`, `chamado_criado_em`, `chamado_status`, `usuario_id_fk`, `setor_id_fk`) VALUES
@@ -56,12 +56,15 @@ INSERT INTO `chamados` (`chamado_id`, `chamado_setor`, `chamado_solicitante`, `c
 (5, 'Divisão de Almoxarifado e Patrimônio', 'Robert Garcia', 'robert.garcia@detran.com', 'Solicito Token de acesso', 'Preciso do Token de acesso para o sistema de atendimento do Gabinete Administrativo do Almoxarifado', '2023-06-04 07:45:00', 'Aberto', 1, 3),
 (6, 'Divisão Financeira', 'Sonya Blade', 'sonya.blade@detran.com', 'Portal de serviços financeiros fora do ar', 'O portal de serviços do departamento financeiro está caindo e não estamos conseguindo seguir com nossas funções', '2023-06-04 08:30:00', 'Em atendimento', 2, 6),
 (7, 'Divisão de Protocolo', 'Mary Jane', 'mary.jane@detran.com', 'Usuário bloqueado', 'Estou tentando acessar o Sistema de Protocolo, mas está aparecendo que meu perfil foi bloqueado', '2023-06-04 08:45:00', 'Aberto', 2, 4),
-(8, 'Divisão de Licitações', 'Johnny Blaze', 'johnny.blaze@detran.com', 'Não estou conseguindo anexar documentos ao DG', 'Estou tentando enviar documentos em pdf para o DG,  mas o sitema está mostrando que não tem documento anexado depois que eu clico em enviar ', '2023-06-04 09:00:00', 'Aberto', 2, 8);
+(8, 'Divisão de Licitações', 'Johnny Blaze', 'johnny.blaze@detran.com', 'Não estou conseguindo anexar documentos ao DG', 'Estou tentando enviar documentos em pdf para o DG,  mas o sitema está mostrando que não tem documento anexado depois que eu clico em enviar ', '2023-06-04 09:00:00', 'Aberto', 2, 8),
+(9, 'Divisão de Contabilidade e Arrecadação', 'Dominic Torreto', 'dominic.torreto@detran.com', 'Outro', 'Meu computador está desligando sozinho depois de 5 minutos de uso. E tem momentos em que ele não liga mais, tenho que esperar 30 minutos para conseguir liga-lo novamente.', '2023-09-11 10:50:58', 'Aberto', 4, 7),
+(10, 'Divisão Financeira', 'Albert Wesker', 'albert.wesker@detran.com.br', 'Outro', 'A toda a Divisão Financeira está sem conexão com o sistema de lançamento dos orçamentos.', '2023-09-11 18:16:37', 'Aberto', 4, 6),
+(11, 'Divisão de Serviços Gerais', 'Jack Rain', 'jack.rain@detran.com', 'Outro', 'Estou com o perfil bloqueado na plataforma de serviços.', '2023-09-12 17:30:40', 'Aberto', 2, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `setores`
+-- Estrutura para tabela `setores`
 --
 
 DROP TABLE IF EXISTS `setores`;
@@ -73,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `setores` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Extraindo dados da tabela `setores`
+-- Despejando dados para a tabela `setores`
 --
 
 INSERT INTO `setores` (`setor_id`, `setor_nome`, `setor_is_ativo`) VALUES
@@ -91,7 +94,7 @@ INSERT INTO `setores` (`setor_id`, `setor_nome`, `setor_is_ativo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuarios`
+-- Estrutura para tabela `usuarios`
 --
 
 DROP TABLE IF EXISTS `usuarios`;
@@ -104,23 +107,24 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario_is_ativo` tinyint NOT NULL,
   `usuario_is_admin` tinyint NOT NULL,
   PRIMARY KEY (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Extraindo dados da tabela `usuarios`
+-- Despejando dados para a tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`usuario_id`, `usuario_nome`, `usuario_senha`, `usuario_email`, `usuario_criado_em`, `usuario_is_ativo`, `usuario_is_admin`) VALUES
-(1, 'Admin', 'a', 'admin@detran.com', '2023-06-01 07:30:00', 1, 1),
-(2, 'Paulo Henrique', 'a', 'paulo.henrique@detran.com', '2023-06-01 07:45:00', 1, 0),
-(3, 'Anderson Silva', 'a', 'anderson.silva@detran.com', '2023-06-01 08:00:00', 0, 0);
+(1, 'Admin', '$2y$10$/vC1UKrEJQUZLN2iM3U9re/4DQP74sXCOVXlYXe/j9zuv1/MHD4o.', 'admin@detran.com', '2023-06-01 07:30:00', 1, 1),
+(2, 'Paulo Henrique', '$2y$10$/vC1UKrEJQUZLN2iM3U9re/4DQP74sXCOVXlYXe/j9zuv1/MHD4o.', 'paulo.henrique@detran.com', '2023-06-01 07:45:00', 1, 0),
+(3, 'Anderson Silva', '$2y$10$/vC1UKrEJQUZLN2iM3U9re/4DQP74sXCOVXlYXe/j9zuv1/MHD4o.', 'anderson.silva@detran.com', '2023-06-01 08:00:00', 0, 0),
+(4, 'John Wick', '$2y$10$RfExwjssHYRewG7.xwGcEukVEmlS2xueXkSN3iaAcwUhFqdcrHF0u', 'john.wick@detran.com', '2023-09-11 11:00:23', 1, 0);
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `chamados`
+-- Restrições para tabelas `chamados`
 --
 ALTER TABLE `chamados`
   ADD CONSTRAINT `fk_chamados_setores1` FOREIGN KEY (`setor_id_fk`) REFERENCES `setores` (`setor_id`),
