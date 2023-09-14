@@ -11,10 +11,10 @@ function isWeekend($date) {
 
 function getFirstDayOfMonth($date) {
    $time = getDateAsDateTime($date)->getTimestamp();
-   return date('Y-m-1', $time);
+   return new DateTime(date('Y-m-1', $time));
 }
 
 function getLastDayOfMonth($date) {
     $time = getDateAsDateTime($date)->getTimestamp();
-    return date('Y-m-t', $time);
+    return new DateTime(date('Y-m-t', $time));
 }

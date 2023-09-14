@@ -110,4 +110,22 @@ class Chamados extends Model {
         "Setor não encontrado";
        }
     }
+
+    public static function getChamadosPorMes($date) {
+        $registries = [];
+        $startDate = getFirstDayOfMonth($date)->format('Y-m-d');
+        $endDate = getLastDayOfMonth($date)->format('Y-m-d');
+
+        $result = static::getResultFromSelect([
+            'raw' => "chamado_criado_em between '{$startDate}' AND '{$endDate}'"
+        ]);
+
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $registries[$row['chamado_criado_em']] = new Chamados($row);
+            }
+        }
+
+        return $registries;
+    }
 }
