@@ -25,6 +25,10 @@ function loadTemplateView($viewName, $params = array()) {
             }
         }
     }
+
+    $totalChamadosAtendidos = Chamados::getCountChamadosAtendidos();
+    $totalChamadosAbertos = Chamados::getCountChamadosAbertos();
+
     require_once(TEMPLATE_PATH . "/header.php");
     require_once(TEMPLATE_PATH . "/menu.php");
     require_once(VIEW_PATH . "/{$viewName}.php");

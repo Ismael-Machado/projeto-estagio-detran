@@ -6,3 +6,19 @@
         body.classList.toggle('hide-sidebar')
     }
 })()
+
+recuperarQtd()
+
+async function recuperarQtd() {
+    const dados = await fetch('teste.php')
+
+    const resposta = await dados.json()
+
+    document.getElementById("qtd-atendidos").innerHTML = resposta['atendidos']
+
+    document.getElementById("qtd-abertos").innerHTML = resposta['abertos']
+}
+
+setInterval(() => {
+    recuperarQtd()
+}, 5000)

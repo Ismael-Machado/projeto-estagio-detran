@@ -43,8 +43,8 @@
         <div class="sidebar-widget">
             <i class="icon icofont-check text-success"></i>
             <div class="info">
-                <span class="main text-success">
-                    8
+                <span id="qtd-atendidos" class="main text-success">
+                    <!-- <?= $totalChamadosAtendidos['count(chamado_id)'] ?> -->
                 </span>
                 <span class="label text-muted">
                     Chamados atendidos
@@ -55,8 +55,8 @@
         <div class="sidebar-widget">
             <i class="icon-alarm icofont-ui-alarm text-danger"></i>
             <div class="info">
-                <span class="main text-danger">
-                    1
+                <span id="qtd-abertos" class="main text-danger">
+                    <!-- <?= $totalChamadosAbertos['count(chamado_id)'] ?> -->
                 </span>
                 <span class="label text-muted">
                     Chamados em espera
