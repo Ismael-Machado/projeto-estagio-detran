@@ -113,11 +113,13 @@ class Chamados extends Model {
 
     public static function getChamadosPorMes($date) {
         $registries = [];
+        $userId = 4;
+        $status = "Aberto";
         $startDate = getFirstDayOfMonth($date)->format('Y-m-d');
         $endDate = getLastDayOfMonth($date)->format('Y-m-d');
 
         $result = static::getResultFromSelect([
-            'raw' => "chamado_criado_em between '{$startDate}' AND '{$endDate}'"
+            'raw' => "chamado_criado_em between '{$startDate}' AND '{$endDate}' AND usuario_id_fk = '{$userId}' AND chamado_status = '{$status}'"
         ]);
 
         if ($result) {

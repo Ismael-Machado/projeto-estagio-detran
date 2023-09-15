@@ -2,7 +2,9 @@
 session_start();
 requireValidSession();
 
-$registries = Chamados::getChamadosPorMes(new DateTime());
+$currentDate = new DateTime();
+
+$registries = Chamados::getChamadosPorMes($currentDate);
 
 loadTemplateView('filtro_chamados', [
     'registries' => $registries
