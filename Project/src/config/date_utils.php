@@ -4,11 +4,6 @@ function getDateAsDateTime($date) {
     return is_string($date) ? new DateTime($date) : $date;
 }
 
-function isWeekend($date) {
-    $inputDate = getDateAsDateTime($date);
-    return $inputDate->format('N') >= 6;
-}
-
 function getFirstDayOfMonth($date) {
    $time = getDateAsDateTime($date)->getTimestamp();
    return new DateTime(date('Y-m-1', $time));
