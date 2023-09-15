@@ -7,6 +7,32 @@
     );
     ?>
     <div>
+        <form class="mb-4" action="#" method="post">
+        <div class="input-group">
+            
+            <select name="usuario" class="form-control mr-2" placeholder="Selecione o usuário...">
+                <option value="">Selecione o usuário</option>
+                <?php
+                    foreach ($usuarios as $usuario) {
+                        $selecionado = $usuario->usuario_id === $usuarioIdSelecionado ? 'selecionado' : '';
+                        echo "<option value='{$usuario->usuario_id}' {$selecionado}>{$usuario->usuario_nome}</option>";
+                    }
+                ?>
+            </select>
+
+            <select name="periodo" class="form-control" placeholder="Selecione o período...">
+                <?php
+                    foreach ($periodos as $chave => $mes) {
+                        $selecionado = $chave === $periodoSelecionado ? 'selecionado' : '';
+                        echo "<option value='{$chave}' {$selecionado}>{$mes}</option>";
+                    }
+                ?>
+            </select>
+            <button class="btn btn-primary ml-2">
+                <i class="icofont-search"></i>
+            </button>
+        </div>
+        </form>
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <th>Solicitante</th>
@@ -19,15 +45,15 @@
                 <th>Ações</th>
             </thead>
             <tbody>
-                <?php foreach ($registries as $registry): ?>
+                <?php foreach ($registros as $registro): ?>
                     <tr>
-                    <td><?= $registry->chamado_solicitante ?></td>
-                    <td><?= $registry->chamado_email_solicitante ?></td>
-                    <td><?= $registry->chamado_assunto ?></td>
-                    <td><?= $registry->chamado_descricao ?></td>
-                    <td><?= $registry->chamado_setor ?></td>
-                    <td><?= $registry->chamado_criado_em ?></td>
-                    <td><?= $registry->chamado_status ?></td>
+                    <td><?= $registro->chamado_solicitante ?></td>
+                    <td><?= $registro->chamado_email_solicitante ?></td>
+                    <td><?= $registro->chamado_assunto ?></td>
+                    <td><?= $registro->chamado_descricao ?></td>
+                    <td><?= $registro->chamado_setor ?></td>
+                    <td><?= $registro->chamado_criado_em ?></td>
+                    <td><?= $registro->chamado_status ?></td>
                     <td>Adicionar botões</td>
                     </tr>
                 <?php endforeach ?>
