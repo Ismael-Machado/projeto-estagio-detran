@@ -9,17 +9,17 @@
     <div>
         <form class="mb-4" action="#" method="post">
         <div class="input-group">
-            
-            <select name="usuario" class="form-control mr-2" placeholder="Selecione o usuário...">
-                <option value="">Selecione o usuário</option>
-                <?php
-                    foreach ($usuarios as $usuario) {
-                        $selecionado = $usuario->usuario_id === $usuarioIdSelecionado ? 'selected' : '';
-                        echo "<option value='{$usuario->usuario_id}' {$selecionado}>{$usuario->usuario_nome}</option>";
-                    }
-                ?>
-            </select>
-
+            <?php if($_SESSION['user']->usuario_is_admin == 1): ?>
+                <select name="usuario" class="form-control mr-2" placeholder="Selecione o usuário...">
+                    <option value="">Selecione o usuário</option>
+                    <?php
+                        foreach ($usuarios as $usuario) {
+                            $selecionado = $usuario->usuario_id === $usuarioIdSelecionado ? 'selected' : '';
+                            echo "<option value='{$usuario->usuario_id}' {$selecionado}>{$usuario->usuario_nome}</option>";
+                        }
+                    ?>
+                </select>
+            <?php endif ?>
             <select name="periodo" class="form-control" placeholder="Selecione o período...">
                 <?php
                     foreach ($periodos as $chave => $mes) {
