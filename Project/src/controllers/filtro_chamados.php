@@ -9,7 +9,7 @@ $usuarioIdSelecionado = $usuario->usuario_id;
 $usuarios = null;
 if ($usuario->usuario_is_admin) {
     $usuarios = User::get();
-    $usuarioIdSelecionado = $_POST['user'] ? $_POST['user'] : $usuario->usuario_id;
+    $usuarioIdSelecionado = $_POST['usuario'] ? $_POST['usuario'] : $usuario->usuario_id;
 }
 
 $periodoSelecionado = $_POST['periodo'] ? $_POST['periodo'] : $dataCorrente->format('Y-m');
@@ -23,7 +23,7 @@ for ($anoDiferenca = 0; $anoDiferenca <= 1; $anoDiferenca++) {
     }
 }
 
-$registros = Chamados::getChamadosPorMes($dataCorrente);
+$registros = Chamados::getChamadosPorMes($usuarioIdSelecionado, $periodoSelecionado);
 
 
 loadTemplateView('filtro_chamados', [

@@ -111,23 +111,23 @@ class Chamados extends Model {
        }
     }
 
-    public static function getChamadosPorMes($date) {
-        $registries = [];
-        $userId = 4;
+    public static function getChamadosPorMes($usuarioId, $date) {
+        $registros = [];
         $status = "Aberto";
-        $startDate = getFirstDayOfMonth($date)->format('Y-m-d');
-        $endDate = getLastDayOfMonth($date)->format('Y-m-d');
+        $dataInicio = getFirstDayOfMonth($date)->format('Y-m-d');
+        $dataFim = getLastDayOfMonth($date)->format('Y-m-d');
 
-        $result = static::getResultFromSelect([
-            'raw' => "chamado_criado_em between '{$startDate}' AND '{$endDate}' AND usuario_id_fk = '{$userId}' AND chamado_status = '{$status}'"
+        $resultado = static::getResultFromSelect([
+            // 'usuario_id_fk' => $usuarioId,
+            'raw' => "chamado_criado_em between '{$dataInicio}' AND '{$dataFim}' AND usuario_id_fk = '{$usuarioId}'"
         ]);
 
-        if ($result) {
-            while ($row = $result->fetch_assoc()) {
-                $registries[$row['chamado_criado_em']] = new Chamados($row);
+        if ($resultado) {
+            while ($row = $resultado->fetch_assoc()) {
+                $registros[$row['chamado_criado_em']] = new Chamados($row);
             }
         }
 
-        return $registries;
+        return $registros;
     }
 }

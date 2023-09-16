@@ -2,7 +2,7 @@
     <?php
     renderTitle(
         'Filtro chamados',
-        'Filtro dos chamados por mês e status',
+        'Filtro dos chamados por mês',
         'icofont-search-stock'
     );
     ?>
@@ -14,7 +14,7 @@
                 <option value="">Selecione o usuário</option>
                 <?php
                     foreach ($usuarios as $usuario) {
-                        $selecionado = $usuario->usuario_id === $usuarioIdSelecionado ? 'selecionado' : '';
+                        $selecionado = $usuario->usuario_id === $usuarioIdSelecionado ? 'selected' : '';
                         echo "<option value='{$usuario->usuario_id}' {$selecionado}>{$usuario->usuario_nome}</option>";
                     }
                 ?>
@@ -23,7 +23,7 @@
             <select name="periodo" class="form-control" placeholder="Selecione o período...">
                 <?php
                     foreach ($periodos as $chave => $mes) {
-                        $selecionado = $chave === $periodoSelecionado ? 'selecionado' : '';
+                        $selecionado = $chave === $periodoSelecionado ? 'selected' : '';
                         echo "<option value='{$chave}' {$selecionado}>{$mes}</option>";
                     }
                 ?>
@@ -42,7 +42,6 @@
                 <th>Setor</th>
                 <th>Data de Solicitação</th>
                 <th>Status</th>
-                <th>Ações</th>
             </thead>
             <tbody>
                 <?php foreach ($registros as $registro): ?>
@@ -54,7 +53,6 @@
                     <td><?= $registro->chamado_setor ?></td>
                     <td><?= $registro->chamado_criado_em ?></td>
                     <td><?= $registro->chamado_status ?></td>
-                    <td>Adicionar botões</td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
