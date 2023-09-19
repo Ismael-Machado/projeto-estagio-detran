@@ -24,7 +24,7 @@
                     <?php foreach($setores as $setor): ?>
                     <tr>
                         <td><?= $setor->setor_nome ?></td>                    
-                        <td class=<?= $setor->setor_is_ativo == 1 ? "table-primary" : "table-active" ?>><?= $usuario->usuario_is_ativo == 1 ? "Sim" : "Não" ?></td>
+                        <td class=<?= $setor->setor_is_ativo == 1 ? "table-primary" : "table-active" ?>><?= $setor->setor_is_ativo == 1 ? "Sim" : "Não" ?></td>
                         
                         <td>
                             <a href="editar_setor.php?update=<?= $setor->setor_id ?>" class="btn btn-warning rounded-bottom">
