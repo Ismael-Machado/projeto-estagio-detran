@@ -83,6 +83,12 @@ class Model {
         $sql[strlen($sql) - 1] = ')';
         $id = Database::executeSQL($sql);
         //esse id aqui precisa ser o chamado_id, muito possivelmente
+        
+        $hash = md5($id); //
+        $updateSql = "UPDATE " . static::$tableName . " SET chamado_hash = '" . $hash . "' WHERE chamado_id = " . $id;
+        
+        Database::executeSQL($updateSql);
+
         return $id;
     }
 
