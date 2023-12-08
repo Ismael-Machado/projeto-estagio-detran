@@ -84,10 +84,10 @@ class Model {
         $id = Database::executeSQL($sql);
         //esse id aqui precisa ser o chamado_id, muito possivelmente
         
-        $hash = md5($id); //
-        $updateSql = "UPDATE " . static::$tableName . " SET chamado_hash = '" . $hash . "' WHERE chamado_id = " . $id;
+        // $hash = md5($id); //
+        // $updateSql = "UPDATE " . static::$tableName . " SET chamado_hash = '" . $hash . "' WHERE chamado_id = " . $id;
         
-        Database::executeSQL($updateSql);
+        // Database::executeSQL($updateSql);
 
         return $id;
     }
@@ -132,6 +132,8 @@ class Model {
             foreach($filters as $column => $value) {
                 if ($column == 'raw') {
                     $sql .= " AND {$value}";
+                } elseif ($column == 'order') {
+                    $sql .= " {$value}";
                 } else {
                     $sql .= " AND ${column} = " . static::getFormatedValue($value);
                 }

@@ -26,3 +26,5 @@ $abertos =  $totalChamadosAbertos['count(chamado_id)'];
 $chamados = ['atendidos' => $atendidos, 'abertos' => $abertos];
 
 echo json_encode($chamados);
+
+// var_dump($_SESSION);

@@ -70,10 +70,23 @@
             chama o controller de confirmação de inserção e carrega na view a 
             confirmação de abertura do chamado com o número do chamado para 
             posterior pesquisa -->
+            <!-- 
             <a href="???" class="btn btn-secondary btn-lg">
                 <i class="icofont-arrow-right mr-1"></i>
                 próxima página
             </a>
+             -->
+             <ul class="pagination">
+                <li class="page-item disabled">
+                    <a class="page-link">Primeira</a>                
+                </li>
+                <li class="page-item"><a href="?page=1" class="page-link">1</a></li>
+                <li class="page-item active"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item">
+                    <a class="page-link">Última</a>                
+                </li>
+             </ul>
         </div>
     </div>
 </main>

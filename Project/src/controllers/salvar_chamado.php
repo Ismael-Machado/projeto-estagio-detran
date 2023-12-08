@@ -1,6 +1,7 @@
 <?php 
 session_start();
-requireValidSession();
+// requireValidSession();
+// tirei o required daqui pra dá de solicitar chamado sem precisar estar logado
 
 loadModel('Chamados');
 

@@ -10,12 +10,15 @@
 
     <title>Chamados Detran</title>
 </head>
-<body>
+<!-- esse trecho php esconde o menu lateral caso não tenha usuário logado -->
+<body class=<?= !$_SESSION['user'] ? "hide-sidebar" : "" ?>>
     <header class="header">
         <div class="logo">
             <i class="icofont-megaphone mr-2"></i>
             <span class="font-weight-bold ml-2">CHAMADOS</span>
         </div>
+        <!-- para não aparecer as opções de menu caso o usuário não esteja logado -->
+        <?php if(isset($_SESSION['user'])): ?>
         <div class="menu-toggle mx-3">
             <i class="icofont-navigation-menu"></i>
         </div>
@@ -45,4 +48,6 @@
                 </ul>
             </div>
         </div>
+        <?php endif ?>
+
     </header>
