@@ -17,14 +17,32 @@ requireValidSession();
 // echo("<br>");
 // print_r(getLastDayOfMonth('2023-02'));
 
-$totalChamadosAtendidos = Chamados::getCountChamadosAtendidos();
-$totalChamadosAbertos = Chamados::getCountChamadosAbertos();
+// $totalChamadosAtendidos = Chamados::getCountChamadosAtendidos();
+// $totalChamadosAbertos = Chamados::getCountChamadosAbertos();
 
-$atendidos = $totalChamadosAtendidos['count(chamado_id)'];
-$abertos =  $totalChamadosAbertos['count(chamado_id)'];
+// $atendidos = $totalChamadosAtendidos['count(chamado_id)'];
+// $abertos =  $totalChamadosAbertos['count(chamado_id)'];
 
-$chamados = ['atendidos' => $atendidos, 'abertos' => $abertos];
+// $chamados = ['atendidos' => $atendidos, 'abertos' => $abertos];
 
-echo json_encode($chamados);
+// echo json_encode($chamados);
 
+$result = Chamados::getTotalChamados();
+$totalItems = $result['count(chamado_id)'];
+
+$pagination = new Pagination();
+$pagination->setTotalItems($totalItems);
+// $offset = $pagination->calculations();
+
+if(isset($_GET['page'])) {
+    $currentPage = $_GET['page'];
+    $offset = $pagination->calculations($currentPage);
+} else {
+    $currentPage = 1;
+    $offset = $pagination->calculations($currentPage);
+}
+
+$limit = $pagination->getItemsPerPage();
+
+print_r($currentPage);
 // var_dump($_SESSION);

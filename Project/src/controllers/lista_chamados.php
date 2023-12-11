@@ -2,14 +2,29 @@
 session_start();
 requireValidSession();
 
-$limite = 7;
-$tamanho = 7;
+// $limite = 7;
+// $tamanho = 7;
+
+$result = Chamados::getTotalChamados();
+$totalItems = $result['count(chamado_id)'];
+
+$pagination = new Pagination;
+$pagination->setTotalItems($totalItems);
+// $offset = $pagination->calculations();
 
 if(isset($_GET['page'])) {
-    $tamanho = $_GET['page'];
+    $currentPage = $_GET['page'];
+    $offset = $pagination->calculations($currentPage);
+} else {
+    $currentPage = 1;
+    $offset = $pagination->calculations($currentPage);
 }
 
-$chamados = Chamados::get(["order" => "limit {$limite} offset {$tamanho}"]);
+$limit = $pagination->getItemsPerPage();
+
+//funcionando!! 
+//ajustar a variável totalItems e apresentar de forma desc
+$chamados = Chamados::get(["order" => "limit {$limit} offset {$offset}"]);
 $usuarios = User::get();
 
-loadTemplateView('lista_chamados', ['chamados' => $chamados, 'usuarios' => $usuarios]);
+loadTemplateView('lista_chamados', ['chamados' => $chamados, 'usuarios' => $usuarios, 'pagination' => $pagination]);
