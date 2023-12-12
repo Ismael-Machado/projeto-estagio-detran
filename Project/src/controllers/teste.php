@@ -27,22 +27,22 @@ requireValidSession();
 
 // echo json_encode($chamados);
 
-$result = Chamados::getTotalChamados();
-$totalItems = $result['count(chamado_id)'];
+// $result = Chamados::getTotalChamados();
+// $totalItems = $result['count(chamado_id)'];
 
-$pagination = new Pagination();
-$pagination->setTotalItems($totalItems);
-// $offset = $pagination->calculations();
+// $pagination = new Pagination();
+// $pagination->setTotalItems($totalItems);
+// // $offset = $pagination->calculations();
 
-if(isset($_GET['page'])) {
-    $currentPage = $_GET['page'];
-    $offset = $pagination->calculations($currentPage);
-} else {
-    $currentPage = 1;
-    $offset = $pagination->calculations($currentPage);
-}
+// if(isset($_GET['page'])) {
+//     $currentPage = $_GET['page'];
+//     $offset = $pagination->calculations($currentPage);
+// } else {
+//     $currentPage = 1;
+//     $offset = $pagination->calculations($currentPage);
+// }
 
-$limit = $pagination->getItemsPerPage();
+// $limit = $pagination->getItemsPerPage();
 
-print_r($currentPage);
+// print_r($currentPage);
 // var_dump($_SESSION);

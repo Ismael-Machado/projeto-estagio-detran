@@ -32,6 +32,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="lista_assuntos.php">
+                    <i class="icofont-list mr-2"></i>
+                    Lista Assuntos
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="lista_usuarios.php">
                     <i class="icofont-users mr-2"></i>
                     Lista Usuários
@@ -44,7 +50,7 @@
             <i class="icon icofont-check text-success"></i>
             <div class="info">
                 <span id="qtd-atendidos" class="main text-success">
-                    <!-- <?= $totalChamadosAtendidos['count(chamado_id)'] ?> -->
+                    <?= $totalChamadosAtendidos['count(chamado_id)'] ?>
                 </span>
                 <span class="label text-muted">
                     Chamados atendidos
@@ -56,7 +62,7 @@
             <i class="icon-alarm icofont-ui-alarm text-danger"></i>
             <div class="info">
                 <span id="qtd-abertos" class="main text-danger">
-                    <!-- <?= $totalChamadosAbertos['count(chamado_id)'] ?> -->
+                    <?= $totalChamadosAbertos['count(chamado_id)'] ?>
                 </span>
                 <span class="label text-muted">
                     Chamados em espera

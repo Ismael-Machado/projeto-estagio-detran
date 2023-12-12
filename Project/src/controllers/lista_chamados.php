@@ -22,9 +22,10 @@ if(isset($_GET['page'])) {
 
 $limit = $pagination->getItemsPerPage();
 
-//funcionando!! 
-//ajustar a variável totalItems e apresentar de forma desc
-$chamados = Chamados::get(["order" => "limit {$limit} offset {$offset}"]);
+// funcionando!! 
+// ajustar a variável totalItems e apresentar de forma desc -> update: ajustado 
+// bugou o menu lateral *o* -> update: ajustado
+$chamados = Chamados::get(["order" => "order by chamado_id desc limit {$limit} offset {$offset}"]);
 $usuarios = User::get();
 
 loadTemplateView('lista_chamados', ['chamados' => $chamados, 'usuarios' => $usuarios, 'pagination' => $pagination]);

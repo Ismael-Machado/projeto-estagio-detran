@@ -76,7 +76,7 @@
                 próxima página
             </a>
              -->
-             <?php echo $pagination->links(); ?>
+             <?php echo $pagination->links() ?>
         </div>
     </div>
 </main>
