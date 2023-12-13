@@ -28,16 +28,18 @@ class Chamados extends Model {
         $nomeSetor = $this->getSetor($this->chamado_setor);
         $this->setor_id_fk = $this->chamado_setor;
         $this->chamado_setor = $nomeSetor;
-
         
+        $nomeAssunto = $this->getAssunto($this->chamado_assunto);
+        $this->chamado_setor = $nomeAssunto;
+
         //fazer o assunto ser dinâmico
-        if($this->chamado_assunto == 1) {
-            $this->chamado_assunto = "Internet";
-        } elseif($this->chamado_assunto == 2) {
-            $this->chamado_assunto = "Monitor";
-        } elseif($this->chamado_assunto == 3) {
-            $this->chamado_assunto = "Outro";  
-        }
+        // if($this->chamado_assunto == 1) {
+        //     $this->chamado_assunto = "Internet";
+        // } elseif($this->chamado_assunto == 2) {
+        //     $this->chamado_assunto = "Monitor";
+        // } elseif($this->chamado_assunto == 3) {
+        //     $this->chamado_assunto = "Outro";  
+        // }
 
         if(!$this->chamado_criado_em) {
             $data = new DateTime('now');
@@ -107,7 +109,17 @@ class Chamados extends Model {
        if($setor) {
         return $setor->setor_nome;
        } else {
-        "Setor não encontrado";
+        return "Setor não encontrado";
+       }
+    }
+
+    public function getAssunto($assuntoId) {
+       $assunto = Assuntos::getOne(['assunto_id' => $assuntoId]);
+
+       if($assunto) {
+        return $assunto->assunto_nome;
+       } else {
+        return "Assunto não encontrado";
        }
     }
 

@@ -3,7 +3,7 @@
         renderTitle(
             'Novo assunto',
             'Realize o cadastro de novo assunto',
-            'icofont-add-users'
+            'icofont-plus-circle'
         );
     ?> 
     <div class="card">

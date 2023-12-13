@@ -160,6 +160,8 @@ class Model {
             return "setor_id";
         } elseif($class == "User") {
             return "usuario_id";
+        } elseif($class == "Assuntos") {
+            return "assunto_id";
         } else {
             return "id";
         }

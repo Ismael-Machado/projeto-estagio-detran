@@ -3,7 +3,7 @@
         renderTitle(
             'Novo setor',
             'Realize o cadastro de novo setor',
-            'icofont-add-users'
+            'icofont-plus-circle'
         );
     ?> 
     <div class="card">

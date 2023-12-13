@@ -1,7 +1,7 @@
 <main class="content">
     <?php 
         renderTitle(
-            'Editar setor',
+            'Editar assunto',
             'Mantenha os dados atualizados',
             'icofont-check'
         );
@@ -11,26 +11,26 @@
             <h3>Editar</h3>
             <p class="mb-0">Confirme após modificar as informações</p>
         </div>
-        <form action="atualizar_setor.php" method="post">
+        <form action="atualizar_assunto.php" method="post">
         <div class="card-body">
             <div class="form-row">
                 <div class="form-group col-md-1">
-                    <label for="id">Código setor</label>
-                    <input type="text" id="id" name="setor_id"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $setor['setor_id'] ?>" readonly>
+                    <label for="id">Código assunto</label>
+                    <input type="text" id="id" name="assunto_id"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $assunto['assunto_id'] ?>" readonly>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="setor_nome"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $setor['setor_nome'] ?>">
+                    <input type="text" id="nome" name="assunto_nome"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $assunto['assunto_nome'] ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-5">
                     <label for="ativo">Ativo?</label>
-                    <input type="checkbox" id="ativo" name="setor_is_ativo" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $setor['setor_is_ativo'] == 1 ? 'checked' : ''?>>
+                    <input type="checkbox" id="ativo" name="assunto_is_ativo" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $assunto['assunto_is_ativo'] == 1 ? 'checked' : ''?>>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
@@ -43,6 +43,5 @@
     </form>
     </div>
 </main>
-
 
 

@@ -51,9 +51,12 @@
                     <label for="problema">Problema</label>
                     <select id="problema" name="chamado_assunto" class="form-select form-control" aria-label="Default select example">
                         <option selected>Selecione a categoria do problema</option>
-                        <option value="1">Internet</option>
+                        <?php foreach($assuntos as $assunto): ?>
+                        <option value="<?= $assunto->assunto_id ?>"><?= $assunto->assunto_nome ?></option>
+                        <?php endforeach ?> 
+                        <!-- <option value="1">Internet</option>
                         <option value="2">Monitor</option>
-                        <option value="3">Outro</option>
+                        <option value="3">Outro</option> -->
                     </select>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
@@ -86,5 +89,3 @@
     </div>
 </main>
 
-<?= print_r($setores) ?>
-<?= var_dump($setores) ?>

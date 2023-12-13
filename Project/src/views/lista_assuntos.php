@@ -27,7 +27,7 @@
                         <td class=<?= $assunto->assunto_is_ativo == 1 ? "table-primary" : "table-active" ?>><?= $assunto->assunto_is_ativo == 1 ? "Sim" : "Não" ?></td>
                         
                         <td>
-                            <a href="editar_setor.php?update=<?= $assunto->assunto_id ?>" class="btn btn-warning rounded-bottom">
+                            <a href="editar_assunto.php?update=<?= $assunto->assunto_id ?>" class="btn btn-warning rounded-bottom">
                                 <i class="icofont-edit"></i>
                                 Editar
                             </a>

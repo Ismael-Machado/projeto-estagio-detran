@@ -23,3 +23,4 @@ if(count($_POST) > 0){
 
 
 loadTemplateView('atualizar_setor', $_POST);
+
