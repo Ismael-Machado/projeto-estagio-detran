@@ -29,8 +29,10 @@ class Chamados extends Model {
         $this->setor_id_fk = $this->chamado_setor;
         $this->chamado_setor = $nomeSetor;
         
-        $nomeAssunto = $this->getAssunto($this->chamado_assunto);
-        $this->chamado_setor = $nomeAssunto;
+        if(is_numeric($this->chamado_assunto)) {
+            $nomeAssunto = $this->getAssunto($this->chamado_assunto);
+            $this->chamado_assunto = $nomeAssunto;
+        }
 
         //fazer o assunto ser dinâmico
         // if($this->chamado_assunto == 1) {
