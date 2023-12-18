@@ -25,6 +25,8 @@ class Chamados extends Model {
     }
 
     public function insert() {
+        // $this->validate();
+        
         $nomeSetor = $this->getSetor($this->chamado_setor);
         $this->setor_id_fk = $this->chamado_setor;
         $this->chamado_setor = $nomeSetor;
@@ -143,5 +145,17 @@ class Chamados extends Model {
         }
 
         return $registros;
+    }
+
+    private function validate() {
+        $errors = [];
+
+        if(!$this->chamado_solicitante) {
+            $errors['chamado_solicitante'] = 'Nome é um campo abrigatório.';
+        }
+
+        if(count($errors) > 0) {
+            throw new ValidationException($errors);
+        }
     }
 }
