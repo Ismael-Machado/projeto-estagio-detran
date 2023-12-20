@@ -13,6 +13,7 @@
         </div>
         <form action="atualizar_editar_chamado.php" method="post">
         <div class="card-body">
+            <?php include(TEMPLATE_PATH . '/messages.php') ?>
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label for="id">Código chamado</label>
@@ -30,9 +31,9 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="nome">Nome solicitante</label>
-                    <input type="text" id="nome" name="chamado_solicitante" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_solicitante'] ?>">
+                    <input type="text" id="nome" name="chamado_solicitante" class="form-control <?= $errors['chamado_solicitante'] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_solicitante'] ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['chamado_solicitante'] ?>
                     </div>
                 </div>
             </div>
@@ -40,9 +41,9 @@
                 <input type="hidden" name="chamado_email_solicitante" value="<?= $_POST['chamado_email_solicitante'] ?>">
                 <div class="form-group col-md-6">
                     <label for="email">E-mail solicitante</label>
-                    <input type="text" id="email" name="chamado_email_solicitante" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_email_solicitante'] ?>">
+                    <input type="text" id="email" name="chamado_email_solicitante" class="form-control <?= $errors['chamado_email_solicitante'] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_email_solicitante'] ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['chamado_email_solicitante'] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
@@ -83,9 +84,9 @@
                 <div class="form-group col-md-6">
                     <label for="user">Usuários</label>
                     <select id="user" name="usuario_id_fk" class="form-select form-control" aria-label="Default select example">
-                        <option selected value="<?= $_POST['usuario_id_fk'] ?>">Selecione o atendente</option> 
+                         
                         <?php foreach($usuarios as $user): ?>
-                        <option value="<?= $user->usuario_id ?>"><?= $user->usuario_nome ?></option>
+                        <option <?= $_POST['usuario_id_fk'] === $user->usuario_id ? 'selected' : '' ?> value="<?= $user->usuario_id ?>"><?= $user->usuario_nome ?></option>
                         <!-- <option value="2">Jurídico</option>
                         <option value="3">Atendimento</option>    -->
                         <!-- <option value="1">Administração</option>
@@ -100,9 +101,8 @@
                 <div class="form-group col-md-6">
                     <label for="setores">Setores</label>
                     <select id="setores" name="chamado_setor" class="form-select form-control" aria-label="Default select example">
-                        <option selected value="<?= $_POST['setor_id_fk'] ?>">Selecione o setor</option> 
                         <?php foreach($setores as $setor): ?>
-                        <option value="<?= $setor->setor_id ?>"><?= $setor->setor_nome ?></option>
+                        <option <?= $_POST['setor_id_fk'] === $setor->setor_id ? 'selected' : '' ?> value="<?= $setor->setor_id ?>"><?= $setor->setor_nome ?></option>
                         <?php endforeach ?>                     
                     </select>
                     <div class="invalid-feedback">

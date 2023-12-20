@@ -50,14 +50,13 @@
             <input type="hidden" name="chamado_criado_em" value="<?= $_POST['chamado_criado_em'] ?>">
             <input type="hidden" name="chamado_status" value="Em atendimento">
            
-            
+            <?php if($_SESSION['user']->usuario_is_admin) : ?>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="user">Usuários</label>
                     <select id="user" name="usuario_id_fk" class="form-select form-control" aria-label="Default select example">
-                        <option selected>Selecione o atendente</option> 
                         <?php foreach($usuarios as $user): ?>
-                        <option value="<?= $user->usuario_id ?>"><?= $user->usuario_nome ?></option>
+                        <option <?= $_SESSION['user']->usuario_id === $user->usuario_id ? 'selected' : '' ?> value="<?= $user->usuario_id ?>"><?= $user->usuario_nome ?></option>
                         <!-- <option value="2">Jurídico</option>
                         <option value="3">Atendimento</option>    -->
                         <!-- <option value="1">Administração</option>
@@ -70,7 +69,19 @@
                     </div>
                 </div>
             </div>  
-
+            <?php else : ?>
+                <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="user">Atendente</label>
+                    <input type="hidden" name="usuario_id_fk" value="<?= $_SESSION['user']->usuario_id ?>">
+                    <input type="text" id="user" name="nome_atendente" 
+                    class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_SESSION['user']->usuario_nome ?>" readonly>
+                    <div class="invalid-feedback">
+                        <?= $errors[''] ?>
+                    </div>
+                </div>
+            </div> 
+            <?php endif ?>
             <input type="hidden" name="setor_id_fk" value="<?= $_POST['setor_id_fk'] ?>">
             
             

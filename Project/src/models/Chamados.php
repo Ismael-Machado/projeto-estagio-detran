@@ -25,7 +25,7 @@ class Chamados extends Model {
     }
 
     public function insert() {
-        // $this->validate();
+        $this->validate();
         
         $nomeSetor = $this->getSetor($this->chamado_setor);
         $this->setor_id_fk = $this->chamado_setor;
@@ -66,6 +66,8 @@ class Chamados extends Model {
     
     //ao invés de chamar uma função diferente, pode ser apenas uma condicional 
     public function editar($id) {
+        $this->validateUpdate();
+
         $nomeSetor = $this->getSetor($this->chamado_setor);
         $this->setor_id_fk = $this->chamado_setor;
         $this->chamado_setor = $nomeSetor;
@@ -154,6 +156,39 @@ class Chamados extends Model {
             $errors['chamado_solicitante'] = 'Nome é um campo abrigatório.';
         }
 
+        if(!$this->chamado_email_solicitante) {
+            $errors['chamado_email_solicitante'] = 'E-mail é um campo obrigatório';
+        } elseif(!filter_var($this->chamado_email_solicitante, FILTER_VALIDATE_EMAIL)) {
+            $errors['chamado_email_solicitante'] = 'Forneça um formato de e-mail válido.';
+        }
+
+        if($this->chamado_setor === 'Selecione o setor') {
+            $errors['chamado_setor'] = 'Selecione um setor';
+        }
+
+        if($this->chamado_assunto === 'Selecione a categoria do problema') {
+            $errors['chamado_assunto'] = 'Selecione um problema';
+        }
+
+        if(count($errors) > 0) {
+            throw new ValidationException($errors);
+        }
+    }
+
+    private function validateUpdate() {
+        $errors = [];
+
+        if(!$this->chamado_solicitante) {
+            $errors['chamado_solicitante'] = 'Nome é um campo abrigatório.';
+        }
+
+        if(!$this->chamado_email_solicitante) {
+            $errors['chamado_email_solicitante'] = 'E-mail é um campo obrigatório';
+        } elseif(!filter_var($this->chamado_email_solicitante, FILTER_VALIDATE_EMAIL)) {
+            $errors['chamado_email_solicitante'] = 'Forneça um formato de e-mail válido.';
+        }
+
+        
         if(count($errors) > 0) {
             throw new ValidationException($errors);
         }

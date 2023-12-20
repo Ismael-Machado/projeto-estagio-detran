@@ -3,8 +3,10 @@ session_start();
 // requireValidSession();
 // tirei o required daqui pra dá de solicitar chamado sem precisar estar logado
 
-loadModel('Chamados');
+loadModel('Setores');
 
+$setores = Setores::get();
+$assuntos = Assuntos::get();
 
 
 $exception = null;
@@ -43,5 +45,8 @@ $dataFormatada = $data->format('Y-m-d H:i:s');
 // print_r($chamado);
 print_r($data);
 
-
-loadTemplateView('salvar_chamado', ['id' => $id, 'exception' => $exception]);
+if($exception) {
+    loadTemplateView('chamados', ['id' => $id, 'exception' => $exception, 'setores' => $setores, 'assuntos' => $assuntos]);
+} else {
+    loadTemplateView('salvar_chamado', ['id' => $id, 'exception' => $exception]);
+}

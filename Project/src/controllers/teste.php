@@ -20,8 +20,8 @@ requireValidSession();
 // $totalChamadosAtendidos = Chamados::getCountChamadosAtendidos();
 // $totalChamadosAbertos = Chamados::getCountChamadosAbertos();
 
-// $atendidos = $totalChamadosAtendidos['count(chamado_id)'];
-// $abertos =  $totalChamadosAbertos['count(chamado_id)'];
+$atendidos = $totalChamadosAtendidos['count(chamado_id)'];
+$abertos =  $totalChamadosAbertos['count(chamado_id)'];
 
 // $chamados = ['atendidos' => $atendidos, 'abertos' => $abertos];
 
@@ -47,6 +47,9 @@ requireValidSession();
 // print_r($currentPage);
 // var_dump($_SESSION);
 
-$assunto = Assuntos::getOne(['assunto_id' => 1]);
-echo $assunto->assunto_nome . "<br>";
-print_r($assunto);
+// $assunto = Assuntos::getOne(['assunto_id' => 1]);
+// echo $assunto->assunto_nome . "<br>";
+// print_r($assunto);
+
+// print_r($_SESSION['user']->usuario_id);
+
