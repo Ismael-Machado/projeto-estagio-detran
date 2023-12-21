@@ -13,35 +13,36 @@
         </div>
         <form action="salvar_usuario.php" method="post">
         <div class="card-body">
+        <?php include(TEMPLATE_PATH . '/messages.php') ?>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="usuario_nome" placeholder="Informe o nome" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="nome" name="usuario_nome" placeholder="Informe o nome" class="form-control <?= $errors['usuario_nome'] ? 'is-invalid' : '' ?>" value="<?= $_POST['usuario_nome'] ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['usuario_nome'] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">E-mail</label>
-                    <input type="text" id="email" name="usuario_email" placeholder="Informe o e-mail" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="email" name="usuario_email" placeholder="Informe o e-mail" class="form-control <?= $errors['usuario_email'] ? 'is-invalid' : '' ?>" value="<?= $_POST['usuario_email'] ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['usuario_email'] ?>
                     </div>
                 </div>
             </div>    
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="senha">Senha</label>
-                    <input type="text" id="senha" name="usuario_senha" placeholder="Informe a senha" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="senha" name="usuario_senha" placeholder="Informe a senha" class="form-control <?= $errors['usuario_senha'] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['usuario_senha'] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="confirma_senha">Confirme a senha</label>
-                    <input type="text" id="confirma_senha" name="confirma_senha" placeholder="Confirme a senha" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="confirma_senha" name="confirma_senha" placeholder="Confirme a senha" class="form-control <?= $errors['confirma_senha'] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['confirma_senha'] ?>
                     </div>
                 </div>
             </div>  

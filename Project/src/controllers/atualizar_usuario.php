@@ -9,10 +9,12 @@ $usuarioData = [];
 if(count($_POST) > 0){
     try {
         $usuario = new User($_POST); 
+        $usuarioData = $usuario->getValues();
+        $_POST = $usuarioData;
         if($usuario->usuario_id) {
             $usuario->update($usuario->usuario_id);
-            $usuarioData = $usuario->getValues();
-            $_POST = $usuarioData;
+            // $usuarioData = $usuario->getValues();
+            // $_POST = $usuarioData;
         }
         
     } catch(Exception $e) {
@@ -21,8 +23,11 @@ if(count($_POST) > 0){
 }
 
 
-
-loadTemplateView('atualizar_usuario', $_POST);
+if($exception) {
+    loadTemplateView('editar_usuario', $_POST + ['usuario' => $usuarioData, 'data' => $data, 'exception' => $exception]);
+} else {
+    loadTemplateView('atualizar_usuario', $_POST);
+}
 
 // print_r($_POST);
 // print_r($usuario);

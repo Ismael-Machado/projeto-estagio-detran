@@ -13,43 +13,44 @@
         </div>
         <form action="atualizar_usuario.php" method="post">
         <div class="card-body">
+            <?php include(TEMPLATE_PATH . '/messages.php') ?>
             <div class="form-row">
                 <div class="form-group col-md-1">
                     <label for="id">Código usuário</label>
-                    <input type="text" id="id" name="usuario_id"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $usuario['usuario_id'] ?>" readonly>
+                    <input type="text" id="id" name="usuario_id"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['usuario_id'] ?>" readonly>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-5">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="usuario_nome"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $usuario['usuario_nome'] ?>">
+                    <input type="text" id="nome" name="usuario_nome"  class="form-control <?= $errors['usuario_nome'] ? 'is-invalid' : '' ?>" value="<?= $_POST['usuario_nome'] ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['usuario_nome'] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">E-mail</label>
-                    <input type="text" id="email" name="usuario_email" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $usuario['usuario_email'] ?>">
+                    <input type="text" id="email" name="usuario_email" class="form-control <?= $errors['usuario_email'] ? 'is-invalid' : '' ?>" value="<?= $_POST['usuario_email'] ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['usuario_email'] ?>
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="usuario_senha" value="<?= $usuario['usuario_senha'] ?>">
+            <input type="hidden" name="usuario_senha" value="<?= $_POST['usuario_senha'] ?>">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nova_senha">Nova Senha</label>
-                    <input type="text" id="nova_senha" name="nova_senha" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="nova_senha" name="nova_senha" class="form-control <?= $errors['nova_senha'] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['nova_senha'] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="confirma_senha">Confirma senha</label>
-                    <input type="text" id="confirma_senha" name="confirma_senha" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="confirma_senha" name="confirma_senha" class="form-control <?= $errors['confirma_senha'] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['confirma_senha'] ?>
                     </div>
                 </div>
             </div>    
@@ -59,7 +60,7 @@
                     <label for="data">Data de criação</label>
                     <!-- usando um type text temporariamente  -->
                     <!-- <input type="date" id="data" name="usuario_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value=""> -->
-                    <input type="text" id="data" name="usuario_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $usuario['usuario_criado_em'] ?>">
+                    <input type="text" id="data" name="usuario_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['usuario_criado_em'] ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
@@ -67,14 +68,14 @@
                 <?php if($_SESSION['user']->usuario_is_admin == 1): ?>
                 <div class="form-group col-md-3">
                     <label for="data">Ativo?</label>
-                    <input type="checkbox" id="data" name="usuario_is_ativo" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $usuario['usuario_is_ativo'] == 1 ? 'checked' : ''?>>
+                    <input type="checkbox" id="data" name="usuario_is_ativo" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $_POST['usuario_is_ativo'] == 1 ? 'checked' : ''?>>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="admin">Admin?</label>
-                    <input type="checkbox" id="admin" name="usuario_is_admin" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $usuario['usuario_is_admin'] == 1 ? 'checked' : ''?>>
+                    <input type="checkbox" id="admin" name="usuario_is_admin" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $_POST['usuario_is_admin'] == 1 ? 'checked' : ''?>>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
