@@ -16,4 +16,8 @@ if(count($_POST) > 0){
     }
 }
 
-loadTemplateView('salvar_setor', ['exception' => $exception]);
+if($exception) {
+    loadTemplateView('novo_setor', ['exception' => $exception]);
+} else {
+    loadTemplateView('salvar_setor', ['exception' => $exception]);
+}

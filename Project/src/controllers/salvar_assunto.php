@@ -16,4 +16,8 @@ if(count($_POST) > 0){
     }
 }
 
-loadTemplateView('salvar_assunto', ['exception' => $exception]);
+if($exception) {
+    loadTemplateView('novo_assunto', ['exception' => $exception]);
+} else {
+    loadTemplateView('salvar_assunto', ['exception' => $exception]);
+}

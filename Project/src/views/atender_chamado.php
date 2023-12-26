@@ -56,7 +56,9 @@
                     <label for="user">Usuários</label>
                     <select id="user" name="usuario_id_fk" class="form-select form-control" aria-label="Default select example">
                         <?php foreach($usuarios as $user): ?>
+                        <?php if($user->usuario_is_ativo == 1) : ?>
                         <option <?= $_SESSION['user']->usuario_id === $user->usuario_id ? 'selected' : '' ?> value="<?= $user->usuario_id ?>"><?= $user->usuario_nome ?></option>
+                        <?php endif ?>
                         <!-- <option value="2">Jurídico</option>
                         <option value="3">Atendimento</option>    -->
                         <!-- <option value="1">Administração</option>

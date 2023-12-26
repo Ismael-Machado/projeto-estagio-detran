@@ -18,7 +18,7 @@
                 <thead>
                     <th>Nome</th>
                     <th>E-mail</th>
-                    <th>Data cadastrado</th>
+                    <th>Data cadastro</th>
                     <th>Ativo?</th>
                     <th>Ações</th>
                 </thead>
@@ -28,7 +28,7 @@
                         <td><?= $usuario->usuario_nome ?></td>
                         <td><?= $usuario->usuario_email ?></td>
                         <!-- mudar a apresentação dessa data posteriormente -->
-                        <td><?= $usuario->usuario_criado_em ?></td>
+                        <td><?= date('d/m/Y', strtotime($usuario->usuario_criado_em)) ?></td>
                         <td class=<?= $usuario->usuario_is_ativo == 1 ? "table-primary" : "table-active" ?>><?= $usuario->usuario_is_ativo == 1 ? "Sim" : "Não" ?></td>
                         
                         <td>

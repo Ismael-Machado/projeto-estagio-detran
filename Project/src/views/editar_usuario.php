@@ -56,16 +56,16 @@
             </div>    
             
             <div class="form-row">
+                <?php if($_SESSION['user']->usuario_is_admin == 1): ?>
                 <div class="form-group col-md-6">
                     <label for="data">Data de criação</label>
                     <!-- usando um type text temporariamente  -->
                     <!-- <input type="date" id="data" name="usuario_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value=""> -->
-                    <input type="text" id="data" name="usuario_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['usuario_criado_em'] ?>">
+                    <input type="datetime-local" id="data" name="usuario_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['usuario_criado_em'] ?>">
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
-                <?php if($_SESSION['user']->usuario_is_admin == 1): ?>
                 <div class="form-group col-md-3">
                     <label for="data">Ativo?</label>
                     <input type="checkbox" id="data" name="usuario_is_ativo" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $_POST['usuario_is_ativo'] == 1 ? 'checked' : ''?>>
@@ -80,6 +80,10 @@
                         <?= $errors[''] ?>
                     </div>
                 </div>
+                <?php else : ?> 
+                    <input type="hidden" name="usuario_criado_em" value="<?= $_POST['usuario_criado_em'] ?>">
+                    <input type="hidden" name="usuario_is_ativo" value="<?= $_POST['usuario_is_ativo'] ?>">
+                    <input type="hidden" name="usuario_is_admin" value="<?= $_POST['usuario_is_admin'] ?>">
                 <?php endif ?>    
             </div>  
                        

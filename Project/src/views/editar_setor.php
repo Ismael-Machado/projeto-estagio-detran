@@ -13,24 +13,25 @@
         </div>
         <form action="atualizar_setor.php" method="post">
         <div class="card-body">
+        <?php include(TEMPLATE_PATH . '/messages.php') ?>
             <div class="form-row">
                 <div class="form-group col-md-1">
                     <label for="id">Código setor</label>
-                    <input type="text" id="id" name="setor_id"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $setor['setor_id'] ?>" readonly>
+                    <input type="text" id="id" name="setor_id"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['setor_id'] ?>" readonly>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="setor_nome"  class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $setor['setor_nome'] ?>">
+                    <input type="text" id="nome" name="setor_nome"  class="form-control <?= $errors['setor_nome'] ? 'is-invalid' : '' ?>" value="<?= $_POST['setor_nome'] ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['setor_nome'] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-5">
                     <label for="ativo">Ativo?</label>
-                    <input type="checkbox" id="ativo" name="setor_is_ativo" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $setor['setor_is_ativo'] == 1 ? 'checked' : ''?>>
+                    <input type="checkbox" id="ativo" name="setor_is_ativo" class="<?= $errors[''] ? 'is-invalid' : '' ?>" <?= $_POST['setor_is_ativo'] == 1 ? 'checked' : ''?>>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
