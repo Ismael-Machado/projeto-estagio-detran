@@ -6,16 +6,20 @@ class Model {
     protected static $columns = [];
     protected $values = [];
     
-    function __construct($array) {
-        $this->loadFromArray($array);
+    function __construct($array, $sanitize = true) {
+        $this->loadFromArray($array, $sanitize);
     }
 
     //função que percorre os dados carregados de um array
     //chama a função set e insere o par de chaves e valores 
     //do array no atributo values da classe 
-    public function loadFromArray($array) {
+    public function loadFromArray($array, $sanitize = true) {
         if($array){
             foreach($array as $key => $value) {
+                $cleanValue = $value;
+                if($sanitize && isset($value)) {
+                    $cleanValue = strip_tags(trim($cleanValue));
+                }
                 $this->$key = $value;
             }
         }
