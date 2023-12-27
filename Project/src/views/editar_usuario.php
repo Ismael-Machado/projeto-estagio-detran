@@ -11,6 +11,8 @@
             <h3>Editar</h3>
             <p class="mb-0">Confirme após modificar as informações</p>
         </div>
+        <!-- pensar aqui numa condição que não mostrará o conteúdo de editar 
+        pro caso do usuário não admin tentar acessar o editar de outro user -->
         <form action="atualizar_usuario.php" method="post">
         <div class="card-body">
             <?php include(TEMPLATE_PATH . '/messages.php') ?>
@@ -91,6 +93,7 @@
         <div class="card-footer d-flex justify-content-center">
             <button class="btn btn-success btn-lg"><i class="icofont-check mr-1"></i>Confirmar</button>
         </div>
+        
     </form>
     </div>
 </main>

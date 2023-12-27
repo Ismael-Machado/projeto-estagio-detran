@@ -55,10 +55,12 @@
                             <?php endif ?>
                             <!-- abrir condicional aqui pra testar se o user da session é admin
                             se não for admin, não mostrar esse button  -->
+                            <?php if($_SESSION['user']->usuario_is_admin == 1) : ?>
                             <a href="editar_chamado.php?update=<?= $chamado->chamado_id ?>" class="btn btn-warning rounded-bottom">
                                 <i class="icofont-edit"></i>
                                 Editar
                             </a>
+                            <?php endif ?>
                         </td>
                     </tr>
                     <?php endforeach ?>

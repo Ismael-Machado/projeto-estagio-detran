@@ -1,6 +1,6 @@
 <?php 
 session_start();
-requireValidSession();
+requireValidSession(true);
 
 $usuarios = User::get();
 

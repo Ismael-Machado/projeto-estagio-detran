@@ -1,6 +1,6 @@
 <?php 
 session_start();
-requireValidSession();
+requireValidSession(true);
 
 
 $assuntos = Assuntos::get();

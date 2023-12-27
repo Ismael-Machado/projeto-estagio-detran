@@ -13,6 +13,7 @@
                     Novo Chamado
                 </a>
             </li>
+            <?php if($_SESSION['user']->usuario_is_admin == 1) : ?>
             <li class="nav-item">
                 <a href="filtro_chamados.php">
                     <i class="icofont-search-stock mr-2"></i>
@@ -43,6 +44,7 @@
                     Lista Usuários
                 </a>
             </li>
+            <?php endif ?>
         </ul>
     </nav>
     <div class="sidebar-widgets">

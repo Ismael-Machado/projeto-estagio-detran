@@ -13,29 +13,32 @@
         </div>
         <form action="salvar_chamado.php" method="post">
         <div class="card-body">
+            <?php include(TEMPLATE_PATH . '/messages.php') ?>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="chamado_solicitante" placeholder="Informe seu nome" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="nome" name="chamado_solicitante" placeholder="Informe seu nome" class="form-control <?= $errors['chamado_solicitante'] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['chamado_solicitante'] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">E-mail</label>
-                    <input type="text" id="email" name="chamado_email_solicitante" placeholder="Informe seu e-mail" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>">
+                    <input type="text" id="email" name="chamado_email_solicitante" placeholder="Informe seu e-mail" class="form-control <?= $errors['chamado_email_solicitante'] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['chamado_email_solicitante'] ?>
                     </div>
                 </div>
             </div>    
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="setor">Setor</label>
-                    <select id="setor" name="chamado_setor" class="form-select form-control" aria-label="Default select example">
+                    <select id="setor" name="chamado_setor" class="form-select form-control <?= $errors['chamado_setor'] ? 'is-invalid' : '' ?>" aria-label="Default select example">
                         <option selected>Selecione o setor</option> 
                         <?php foreach($setores as $setor): ?>
+                        <?php if($setor->setor_is_ativo == 1) : ?>
                         <option value="<?= $setor->setor_id ?>"><?= $setor->setor_nome ?></option>
+                        <?php endif ?>
                         <!-- <option value="2">Jurídico</option>
                         <option value="3">Atendimento</option>    -->
                         <!-- <option value="1">Administração</option>
@@ -44,19 +47,24 @@
                         <?php endforeach ?>                     
                     </select>
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['chamado_setor'] ?>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="problema">Problema</label>
-                    <select id="problema" name="chamado_assunto" class="form-select form-control" aria-label="Default select example">
+                    <select id="problema" name="chamado_assunto" class="form-select form-control <?= $errors['chamado_assunto'] ? 'is-invalid' : '' ?>" aria-label="Default select example">
                         <option selected>Selecione a categoria do problema</option>
-                        <option value="1">Internet</option>
+                        <?php foreach($assuntos as $assunto): ?>
+                        <?php if($assunto->assunto_is_ativo == 1) : ?>
+                        <option value="<?= $assunto->assunto_id ?>"><?= $assunto->assunto_nome ?></option>
+                        <?php endif ?>
+                        <?php endforeach ?> 
+                        <!-- <option value="1">Internet</option>
                         <option value="2">Monitor</option>
-                        <option value="3">Outro</option>
+                        <option value="3">Outro</option> -->
                     </select>
                     <div class="invalid-feedback">
-                        <?= $errors[''] ?>
+                        <?= $errors['chamado_assunto'] ?>
                     </div>
                 </div>
             </div>    
@@ -86,5 +94,3 @@
     </div>
 </main>
 
-<?= print_r($setores) ?>
-<?= var_dump($setores) ?>

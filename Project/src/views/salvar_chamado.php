@@ -9,8 +9,11 @@
 
     <div class="confirmacao">
         
-
-        <p>Chamado <span><?= $id ?></span> aberto com sucesso</p>
+        <?php if($_SESSION['user']) : ?>
+            <p>Chamado <span><?= $id ?></span> aberto com sucesso</p>
+        <?php else : ?>
+            <p>Chamado aberto com sucesso</p>
+        <?php endif ?>
     </div>
 
 </main>    

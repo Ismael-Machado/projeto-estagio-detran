@@ -48,6 +48,17 @@
                 </ul>
             </div>
         </div>
-        <?php endif ?>
+        <?php else : ?>
+            <div class="spacer"></div>
+            <a href="#" class="btn btn-light rounded-bottom mr-3">
+                <i class="icofont-search"></i>
+                Buscar
+            </a>
+            <a href="login.php" class="btn btn-info rounded-bottom mr-3">
+                <i class="icofont-login"></i>
+                Login
+            </a>
+
+        <?php endif ?>    
 
     </header>
