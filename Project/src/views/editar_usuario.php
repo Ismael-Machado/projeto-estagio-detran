@@ -13,6 +13,7 @@
         </div>
         <!-- pensar aqui numa condição que não mostrará o conteúdo de editar 
         pro caso do usuário não admin tentar acessar o editar de outro user -->
+        <?php if($_SESSION['user']->usuario_id == $_POST['usuario_id'] || $_SESSION['user']->usuario_is_admin == 1) : ?>
         <form action="atualizar_usuario.php" method="post">
         <div class="card-body">
             <?php include(TEMPLATE_PATH . '/messages.php') ?>
@@ -95,6 +96,7 @@
         </div>
         
     </form>
+    <?php endif ?>
     </div>
 </main>
 
