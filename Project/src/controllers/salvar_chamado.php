@@ -7,12 +7,13 @@ loadModel('Setores');
 
 $setores = Setores::get();
 $assuntos = Assuntos::get();
-
+$chamadoData = [];
 
 $exception = null;
 if(count($_POST) > 0){
     try {
         $chamado = new Chamados($_POST); 
+        
         // $chamado->insert();
 
         //além de retornar o id, a função insert deve retornar um hash para apresentar na view 
@@ -24,8 +25,14 @@ if(count($_POST) > 0){
     }
 }
 
+
+$chamadoTemp = Chamados::getOne(['chamado_id' => $id]);
+$chamadoData = $chamadoTemp->getValues();
+
 $data = new DateTime('now');
 $dataFormatada = $data->format('Y-m-d H:i:s');
+
+// $hash = base64_encode($id);
 
 // $chamado = new Chamados([
 //     'chamado_id' => 1,
@@ -48,5 +55,5 @@ print_r($data);
 if($exception) {
     loadTemplateView('chamados', ['id' => $id, 'exception' => $exception, 'setores' => $setores, 'assuntos' => $assuntos]);
 } else {
-    loadTemplateView('salvar_chamado', ['id' => $id, 'exception' => $exception]);
+    loadTemplateView('salvar_chamado', ['hash' => $hash, 'exception' => $exception, 'chamadoData' => $chamadoData]);
 }

@@ -12,6 +12,7 @@ class Chamados extends Model {
         'chamado_descricao',
         'chamado_criado_em',
         'chamado_status',
+        'chamado_token',
         'usuario_id_fk',
         'setor_id_fk',
     ];
@@ -26,6 +27,8 @@ class Chamados extends Model {
 
     public function insert() {
         $this->validate();
+
+        $this->chamado_token = $this->tokenG();
         
         $nomeSetor = $this->getSetor($this->chamado_setor);
         $this->setor_id_fk = $this->chamado_setor;
@@ -91,16 +94,28 @@ class Chamados extends Model {
     }
 
     public static function getCountChamadosAbertos() {
+        //pega o dia de ontem formatado
+        //passa para essa variável data
+        //passa o valor de data certinho como parâmetro da consulta
+        //para mostrar os contadores no dia hoje
+        // $data = $this->getYesterdayFormated();
+        
         $result = Database::getResultFromQuery(
             "SELECT count(chamado_id) 
             FROM chamados
             WHERE chamado_status = 'Aberto'"
+            //AND chamado_criado_em > 'yyyy-mm-dd' (isso já é suficiente)
+            //exemplo:
+            // AND chamado_criado_em > '2023-12-28'"
+            //no caso a data vai ser o valor da variável:
+            // AND chamado_criado_em > '{$data}'"
         );
 
         return $result->fetch_assoc();
     }
 
     public static function getTotalChamados() {
+
         $result = Database::getResultFromQuery(
             "SELECT count(chamado_id) 
             FROM chamados"
@@ -192,5 +207,20 @@ class Chamados extends Model {
         if(count($errors) > 0) {
             throw new ValidationException($errors);
         }
+    }
+
+    public static function tokenG($length=10) {
+        $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $token = "";
+
+        for($i = 0; $i < $length; $i++) {
+            $token .= $caracteres[rand(0,35)];
+        }
+
+        return $token;
+    }
+
+    private function getYesterdayFormated() {
+
     }
 }

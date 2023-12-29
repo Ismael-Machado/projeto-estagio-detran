@@ -96,6 +96,10 @@
         </div>
         
     </form>
+    <?php else : ?>
+        <div class="my-3 alert alert-danger" role="alert">
+            Acesso negado! 
+        </div>
     <?php endif ?>
     </div>
 </main>
