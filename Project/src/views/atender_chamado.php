@@ -49,6 +49,7 @@
 
             <input type="hidden" name="chamado_criado_em" value="<?= $_POST['chamado_criado_em'] ?>">
             <input type="hidden" name="chamado_status" value="Em atendimento">
+            <input type="hidden" name="chamado_token" value="<?= $_POST['chamado_token'] ?>">
            
             <?php if($_SESSION['user']->usuario_is_admin) : ?>
             <div class="form-row">

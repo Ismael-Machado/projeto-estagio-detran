@@ -25,9 +25,10 @@ if(count($_POST) > 0){
     }
 }
 
-
-$chamadoTemp = Chamados::getOne(['chamado_id' => $id]);
-$chamadoData = $chamadoTemp->getValues();
+if($id) {
+    $chamadoTemp = Chamados::getOne(['chamado_id' => $id]);
+    $chamadoData = $chamadoTemp->getValues();
+}
 
 $data = new DateTime('now');
 $dataFormatada = $data->format('Y-m-d H:i:s');

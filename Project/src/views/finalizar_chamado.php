@@ -53,6 +53,7 @@
                 </div>
             </div>
             <input type="hidden" name="chamado_status" value="Finalizado">
+            <input type="hidden" name="chamado_token" value="<?= $_POST['chamado_token'] ?>">
 
             <input type="hidden" name="usuario_id_fk" value="<?= $_POST['usuario_id_fk'] ?>">
             <input type="hidden" name="setor_id_fk" value="<?= $_POST['setor_id_fk'] ?>">

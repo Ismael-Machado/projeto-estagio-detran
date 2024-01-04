@@ -63,21 +63,28 @@
                         <?= $errors[''] ?>
                     </div>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                     <label for="data">Data</label>
                     <input type="datetime-local" id="data" name="chamado_criado_em" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_criado_em'] ?>" readonly>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                     <label for="status">Status</label>
                     <input type="text" id="status" name="chamado_status" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_status'] ?>" readonly>
                     <div class="invalid-feedback">
                         <?= $errors[''] ?>
                     </div>
                 </div>
-
+                <div class="form-group col-md-2">
+                    <label for="token">Token</label>
+                    <input type="text" id="token" name="chamado_token" class="form-control <?= $errors[''] ? 'is-invalid' : '' ?>" value="<?= $_POST['chamado_token'] ?>" readonly>
+                    <div class="invalid-feedback">
+                        <?= $errors[''] ?>
+                    </div>
+                </div>
+                
             </div> 
             
             <div class="form-row">

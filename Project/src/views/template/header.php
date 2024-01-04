@@ -50,7 +50,7 @@
         </div>
         <?php else : ?>
             <div class="spacer"></div>
-            <a href="#" class="btn btn-light rounded-bottom mr-3">
+            <a href="busca_chamados.php" class="btn btn-light rounded-bottom mr-3">
                 <i class="icofont-search"></i>
                 Buscar
             </a>
