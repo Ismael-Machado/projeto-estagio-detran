@@ -83,11 +83,46 @@ class Chamados extends Model {
     }
 
     public static function getCountChamadosAtendidos() {
+                        
         $result = Database::getResultFromQuery(
             "SELECT count(chamado_id) 
             FROM chamados
             WHERE chamado_status = 'Finalizado' 
             OR chamado_status = 'Em atendimento'"
+        );
+
+        
+
+        return $result->fetch_assoc();
+    }
+
+    public static function getChamadosAtendidosNoDia() {
+        $date = new DateTime();
+        $today = $date->format('Y-m-d');
+
+        $query = "SELECT count(chamado_id) 
+        FROM chamados
+        WHERE chamado_criado_em >= '{$today}'
+        AND chamado_status = 'Em atendimento'";
+               
+        $result = Database::getResultFromQuery(
+            $query
+        );
+
+        return $result->fetch_assoc();
+    }
+
+    public static function getChamadosFinalizadosNoDia() {
+        $date = new DateTime();
+        $today = $date->format('Y-m-d');
+
+        $query = "SELECT count(chamado_id) 
+        FROM chamados
+        WHERE chamado_criado_em >= '{$today}'
+        AND chamado_status = 'Finalizado'";
+        
+        $result = Database::getResultFromQuery(
+            $query
         );
 
         return $result->fetch_assoc();
@@ -104,6 +139,32 @@ class Chamados extends Model {
             "SELECT count(chamado_id) 
             FROM chamados
             WHERE chamado_status = 'Aberto'"
+            //AND chamado_criado_em > 'yyyy-mm-dd' (isso já é suficiente)
+            //exemplo:
+            // AND chamado_criado_em > '2023-12-28'"
+            //no caso a data vai ser o valor da variável:
+            // AND chamado_criado_em > '{$data}'"
+        );
+
+        return $result->fetch_assoc();
+    }
+
+    public static function getChamadosAbertosNoDia() {
+        //pega o dia de ontem formatado
+        //passa para essa variável data
+        //passa o valor de data certinho como parâmetro da consulta
+        //para mostrar os contadores no dia hoje
+        // $data = $this->getYesterdayFormated();
+        $date = new DateTime();
+        $today = $date->format('Y-m-d');
+
+        $result = Database::getResultFromQuery(
+            
+            
+            "SELECT count(chamado_id) 
+            FROM chamados
+            WHERE chamado_criado_em >= '{$today}'
+            AND chamado_status = 'Aberto'"
             //AND chamado_criado_em > 'yyyy-mm-dd' (isso já é suficiente)
             //exemplo:
             // AND chamado_criado_em > '2023-12-28'"
@@ -220,7 +281,10 @@ class Chamados extends Model {
         return $token;
     }
 
-    private function getYesterdayFormated() {
+    public function getTodayFormated() {
+        $date = new DateTime();
+        $today = $date->format('Y-m-d');
 
+        return $today;
     }
 }

@@ -4,7 +4,13 @@
             <li class="nav-item">
                 <a href="lista_chamados.php">
                     <i class="icofont-search-document mr-2"></i>
-                    Lista Chamados
+                    Lista Chamados Total
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="lista_chamados_mensal.php">
+                    <i class="icofont-calendar mr-2"></i>
+                    Lista Chamados Mensal
                 </a>
             </li>
             <li class="nav-item">
@@ -52,7 +58,7 @@
             <i class="icon icofont-check text-success"></i>
             <div class="info">
                 <span id="qtd-atendidos" class="main text-success">
-                    <?= $totalChamadosAtendidos['count(chamado_id)'] ?>
+                    <?= $totalAtendidos ?>
                 </span>
                 <span class="label text-muted">
                     Chamados atendidos
@@ -64,7 +70,7 @@
             <i class="icon-alarm icofont-ui-alarm text-danger"></i>
             <div class="info">
                 <span id="qtd-abertos" class="main text-danger">
-                    <?= $totalChamadosAbertos['count(chamado_id)'] ?>
+                    <?= $abertos ?>
                 </span>
                 <span class="label text-muted">
                     Chamados em espera

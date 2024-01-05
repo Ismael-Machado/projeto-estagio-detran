@@ -17,15 +17,33 @@ requireValidSession();
 // echo("<br>");
 // print_r(getLastDayOfMonth('2023-02'));
 
-// $totalChamadosAtendidos = Chamados::getCountChamadosAtendidos();
-// $totalChamadosAbertos = Chamados::getCountChamadosAbertos();
+$totalChamadosAbertos = Chamados::getChamadosAbertosNoDia();
+$totalChamadosAtendidos = Chamados::getChamadosAtendidosNoDia();
+$totalChamadosFinalizados = Chamados::getChamadosFinalizadosNoDia();
 
+$abertos = $totalChamadosAbertos['count(chamado_id)'];
 $atendidos = $totalChamadosAtendidos['count(chamado_id)'];
-$abertos =  $totalChamadosAbertos['count(chamado_id)'];
+$finalizados = $totalChamadosFinalizados['count(chamado_id)'];
 
-// $chamados = ['atendidos' => $atendidos, 'abertos' => $abertos];
+$totalAtendidos = $atendidos + $finalizados;
 
-// echo json_encode($chamados);
+$total = "" . $totalAtendidos;
+
+// echo $abertos;
+// echo '<br>';
+// echo $atendidos;
+// echo '<br>';
+// echo $finalizados;
+// echo '<br>';
+// echo $totalAtendidos;
+// $abertos =  $totalChamadosAbertos['count(chamado_id)'];
+
+//os parâmetros tem que ser string
+$chamados = ['total' => $total, 'abertos' => $abertos];
+
+//carrega os valores para a função recuperarQtd do arquivo script.js
+//a função carrega os valores dos widgets do menu lateral
+echo json_encode($chamados);
 
 // $result = Chamados::getTotalChamados();
 // $totalItems = $result['count(chamado_id)'];
@@ -53,3 +71,6 @@ $abertos =  $totalChamadosAbertos['count(chamado_id)'];
 
 // print_r($_SESSION['user']->usuario_id);
 
+// $now = new DateTime();
+// $lastMonth = $now->sub(new DateInterval('P1M'));
+// echo $lastMonth->format('Y-m-d');

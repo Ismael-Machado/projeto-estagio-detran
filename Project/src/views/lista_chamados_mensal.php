@@ -2,7 +2,7 @@
     <?php 
         renderTitle(
             'Lista Chamados',
-            'Vizualize a lista de chamados completa',
+            'Vizualize a lista de chamados do mês',
             'icofont-list'
         );
 

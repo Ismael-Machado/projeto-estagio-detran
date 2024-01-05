@@ -14,7 +14,7 @@ async function recuperarQtd() {
 
     const resposta = await dados.json()
 
-    document.getElementById("qtd-atendidos").innerHTML = resposta['atendidos']
+    document.getElementById("qtd-atendidos").innerHTML = resposta['total']
 
     document.getElementById("qtd-abertos").innerHTML = resposta['abertos']
 }
