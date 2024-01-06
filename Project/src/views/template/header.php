@@ -42,7 +42,7 @@
                     <li class="nav-item">
                         <a href="logout.php">
                             <i class="icofont-logout mr-2"></i>
-                            Se saia
+                            Sair
                         </a>
                     </li>
                 </ul>

@@ -2,6 +2,12 @@
     <nav class="menu mt-3">
         <ul class="nav-list">
             <li class="nav-item">
+                <a href="lista_chamados_dia.php">
+                    <i class="icofont-newspaper mr-2"></i>
+                    Lista Chamados Hoje
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="lista_chamados.php">
                     <i class="icofont-search-document mr-2"></i>
                     Lista Chamados Total

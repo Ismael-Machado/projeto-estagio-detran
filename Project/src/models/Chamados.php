@@ -185,6 +185,33 @@ class Chamados extends Model {
         return $result->fetch_assoc();
     }
 
+    public static function getTotalChamadosNoDia() {
+        $date = new DateTime();
+        $today = $date->format('Y-m-d');
+
+        $result = Database::getResultFromQuery(
+            "SELECT count(chamado_id) 
+            FROM chamados
+            WHERE chamado_criado_em >= '{$today}'"
+        );
+
+        return $result->fetch_assoc();
+    }
+
+    public static function getTotalChamadosNoMes() {
+        $now = new DateTime();
+        $lastMonth = $now->sub(new DateInterval('P1M'));
+        $data = $lastMonth->format('Y-m-d');
+
+        $result = Database::getResultFromQuery(
+            "SELECT count(chamado_id) 
+            FROM chamados
+            WHERE chamado_criado_em >= '{$data}'"
+        );
+
+        return $result->fetch_assoc();
+    }
+
     public function getSetor($setorId) {
        $setor = Setores::getOne(['setor_id' => $setorId]);
 

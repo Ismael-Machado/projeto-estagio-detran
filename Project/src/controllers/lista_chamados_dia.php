@@ -5,7 +5,7 @@ requireValidSession();
 // $limite = 7;
 // $tamanho = 7;
 
-$result = Chamados::getTotalChamadosNoMes();
+$result = Chamados::getTotalChamadosNoDia();
 $totalItems = $result['count(chamado_id)'];
 
 $pagination = new Pagination;
@@ -23,14 +23,13 @@ if(isset($_GET['page'])) {
 $limit = $pagination->getItemsPerPage();
 
 //obtendo os parâmetros de data
-$now = new DateTime();
-$lastMonth = $now->sub(new DateInterval('P1M'));
-$data = $lastMonth->format('Y-m-d');
+$date = new DateTime();
+$today = $date->format('Y-m-d');
 
 // funcionando!! 
 // ajustar a variável totalItems e apresentar de forma desc -> update: ajustado 
 // bugou o menu lateral *o* -> update: ajustado
-$chamados = Chamados::get(["raw" => "chamado_criado_em >= '{$data}'","order" => "order by chamado_id desc limit {$limit} offset {$offset}"]);
+$chamados = Chamados::get(["raw" => "chamado_criado_em >= '{$today}'","order" => "order by chamado_id desc limit {$limit} offset {$offset}"]);
 $usuarios = User::get();
 
-loadTemplateView('lista_chamados_mensal', ['chamados' => $chamados, 'usuarios' => $usuarios, 'pagination' => $pagination]);
+loadTemplateView('lista_chamados_dia', ['chamados' => $chamados, 'usuarios' => $usuarios, 'pagination' => $pagination]);
