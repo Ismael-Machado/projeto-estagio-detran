@@ -5,7 +5,7 @@ requireValidSession(true);
 
 $totalChamados = Chamados::getTotalChamados();
 $totalChamadosAtendidos = Chamados::getCountChamadosAtendidos();
-$totalChamadosAbertos = Chamados::getCountChamadosAbertosNoDia();
+$totalChamadosAbertos = Chamados::getCountChamadosAbertos();
 
 loadTemplateView('relatorio_chamados', 
     ['totalChamados' => $totalChamados, 
