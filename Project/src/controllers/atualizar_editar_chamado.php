@@ -35,6 +35,6 @@ if($exception) {
     loadTemplateView('atualizar_editar_chamado');
 }
 
-print_r($_POST);
-echo '<br>';
-print_r($chamado);
+// print_r($_POST);
+// echo '<br>';
+// print_r($chamado);

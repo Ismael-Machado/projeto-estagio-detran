@@ -51,7 +51,7 @@ $dataFormatada = $data->format('Y-m-d H:i:s');
 // $chamadoPost = new Chamados($_POST);
 
 // print_r($chamado);
-print_r($data);
+// print_r($data);
 
 if($exception) {
     loadTemplateView('chamados', ['id' => $id, 'exception' => $exception, 'setores' => $setores, 'assuntos' => $assuntos]);

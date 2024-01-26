@@ -24,6 +24,6 @@ if(count($_POST) > 0){
 
 loadTemplateView('atualizar_chamado', $_POST);
 
-print_r($_POST);
-echo '<br>';
-print_r($chamado);
+// print_r($_POST);
+// echo '<br>';
+// print_r($chamado);

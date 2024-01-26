@@ -6,10 +6,13 @@ $usuarioData = [];
 
 if(count($_POST) === 0 && isset($_GET['update'])) {
     $usuario = User::getOne(['usuario_id' => $_GET['update']]);
-    $usuarioData = $usuario->getValues();
-    $dataFormatada = strtotime($usuarioData['usuario_criado_em']);
-    $data = date('Y-m-d', $dataFormatada);
-    $_POST = $usuarioData; 
+    if($usuario) {
+        $usuarioData = $usuario->getValues();
+        $dataFormatada = strtotime($usuarioData['usuario_criado_em']);
+        $data = date('Y-m-d', $dataFormatada);
+        $_POST = $usuarioData; 
+    }
+        
 }
 
 

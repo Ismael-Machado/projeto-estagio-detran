@@ -76,5 +76,5 @@
 </main>
 
 
-<?= var_dump($usuarios) ?>
-<?= var_dump($_POST) ?>
+<!-- <?= var_dump($usuarios) ?> -->
+<!-- <?= var_dump($_POST) ?> -->
