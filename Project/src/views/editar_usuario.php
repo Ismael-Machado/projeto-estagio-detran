@@ -11,8 +11,7 @@
             <h3>Editar</h3>
             <p class="mb-0">Confirme após modificar as informações</p>
         </div>
-        <!-- pensar aqui numa condição que não mostrará o conteúdo de editar 
-        pro caso do usuário não admin tentar acessar o editar de outro user -->
+        
         <?php if($_SESSION['user']->usuario_id == $_POST['usuario_id'] || $_SESSION['user']->usuario_is_admin == 1) : ?>
         <form action="atualizar_usuario.php" method="post">
         <div class="card-body">

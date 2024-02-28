@@ -96,11 +96,6 @@
                         <?php if($user->usuario_is_ativo == 1) : ?>
                         <option <?= $_POST['usuario_id_fk'] === $user->usuario_id ? 'selected' : '' ?> value="<?= $user->usuario_id ?>"><?= $user->usuario_nome ?></option>
                         <?php endif ?>
-                        <!-- <option value="2">Jurídico</option>
-                        <option value="3">Atendimento</option>    -->
-                        <!-- <option value="1">Administração</option>
-                        <option value="2">Jurídico</option>
-                        <option value="3">Atendimento</option>    -->
                         <?php endforeach ?>                     
                     </select>
                     <div class="invalid-feedback">

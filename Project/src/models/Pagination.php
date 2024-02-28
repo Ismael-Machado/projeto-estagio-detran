@@ -61,7 +61,6 @@ class Pagination {
 
         if($this->currentPage < $this->totalPages) {
             $next = $this->currentPage + 1;
-            //aqui ele faz o merge de qualquer parâmetro recebido do get com o array 'page' (valor do pageIdentifier) => valor 
             $linkPage = http_build_query(array_merge($_GET, [$this->pageIdentifier => $next]));
             $last = http_build_query(array_merge($_GET, [$this->pageIdentifier => $this->totalPages]));
             $links .= "<li class='page-item'><a href='?{$linkPage}' class='page-link'>Próxima</a></li>";

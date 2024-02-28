@@ -13,8 +13,7 @@ if(count($_POST) > 0){
         $_POST = $usuarioData;
         if($usuario->usuario_id) {
             $usuario->update($usuario->usuario_id);
-            // $usuarioData = $usuario->getValues();
-            // $_POST = $usuarioData;
+            
         }
         
     } catch(Exception $e) {
@@ -29,5 +28,3 @@ if($exception) {
     loadTemplateView('atualizar_usuario', $_POST);
 }
 
-// print_r($_POST);
-// print_r($usuario);

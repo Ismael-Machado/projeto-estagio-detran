@@ -75,41 +75,16 @@ class Model {
         $sql = "INSERT INTO " . static::$tableName . " ("
         . implode(",", static::$columns) . ") VALUES (";
         foreach(static::$columns as $col) {
-            // o $this->$col chama o atributo da classe com aquele nome 
-            // definido em columns e guardado em values. Quando o objeto é 
-            // criado os valores dos atributos são inseridos com base em 
-            // chaves e valores em values, então com base no nome da col 
-            // é buscado uma chave em values com o mesmo nome e retornado 
-            // o valor dentro daquela chave (entendimento meu)
             $sql .= static::getFormatedValue($this->$col) . ",";
         }
 
         $sql[strlen($sql) - 1] = ')';
         $id = Database::executeSQL($sql);
-        //esse id aqui precisa ser o chamado_id, muito possivelmente
         
-        // $hash = md5($id); //
-        // $updateSql = "UPDATE " . static::$tableName . " SET chamado_hash = '" . $hash . "' WHERE chamado_id = " . $id;
-        
-        // Database::executeSQL($updateSql);
-
         return $id;
     }
 
-    // public function update() {
-    //     $sql = "UPDATE " . static::$tableName . " SET ";
-    //     foreach(static::$columns as $col) {
-    //         $sql .= " ${col} = " . static::getFormatedValue($this->$col) . ",";
-    //     }
-
-    //     $sql[strlen($sql) -1] = ' ';
-    //     //esse id é o id da instância 
-    //     //provelmente vou ter que por o id específico de cada estância  ou 
-    //     //alterar todas as tabelas e atributos para serem apenas id (oq é mais fácil de implementar)
-    //     $sql .= "WHERE id = {$this->id}";
-    //     Database::executeSQL($sql);
-    // }
-
+    
     public function update($id) {
         $sql = "UPDATE " . static::$tableName . " SET ";
         foreach(static::$columns as $col) {

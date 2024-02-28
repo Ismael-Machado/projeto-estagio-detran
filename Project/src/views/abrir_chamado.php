@@ -39,11 +39,6 @@
                         <?php if($setor->setor_is_ativo == 1) : ?>
                         <option value="<?= $setor->setor_id ?>"><?= $setor->setor_nome ?></option>
                         <?php endif ?>
-                        <!-- <option value="2">Jurídico</option>
-                        <option value="3">Atendimento</option>    -->
-                        <!-- <option value="1">Administração</option>
-                        <option value="2">Jurídico</option>
-                        <option value="3">Atendimento</option>    -->
                         <?php endforeach ?>                     
                     </select>
                     <div class="invalid-feedback">
@@ -59,9 +54,7 @@
                         <option value="<?= $assunto->assunto_id ?>"><?= $assunto->assunto_nome ?></option>
                         <?php endif ?>
                         <?php endforeach ?> 
-                        <!-- <option value="1">Internet</option>
-                        <option value="2">Monitor</option>
-                        <option value="3">Outro</option> -->
+                        
                     </select>
                     <div class="invalid-feedback">
                         <?= $errors['chamado_assunto'] ?>
@@ -80,14 +73,6 @@
             </div>    
         </div>
         <div class="card-footer d-flex justify-content-center">
-            <!-- se todos os dados passarem pela validação, o href desse butão link
-            chama o controller de confirmação de inserção e carrega na view a 
-            confirmação de abertura do chamado com o número do chamado para 
-            posterior pesquisa -->
-            <!-- <a href="salvar_chamado.php" class="btn btn-success btn-lg">
-                <i class="icofont-check mr-1"></i>
-                Confirma
-            </a> -->
             <button class="btn btn-success btn-lg">Salvar</button>
         </div>
     </form>

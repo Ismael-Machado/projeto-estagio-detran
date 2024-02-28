@@ -39,15 +39,7 @@ class Chamados extends Model {
             $this->chamado_assunto = $nomeAssunto;
         }
 
-        //fazer o assunto ser dinâmico
-        // if($this->chamado_assunto == 1) {
-        //     $this->chamado_assunto = "Internet";
-        // } elseif($this->chamado_assunto == 2) {
-        //     $this->chamado_assunto = "Monitor";
-        // } elseif($this->chamado_assunto == 3) {
-        //     $this->chamado_assunto = "Outro";  
-        // }
-
+        
         if(!$this->chamado_criado_em) {
             $data = new DateTime('now');
             $dataFormatada = $data->format('Y-m-d H:i:s');
@@ -67,7 +59,6 @@ class Chamados extends Model {
     }
 
     
-    //ao invés de chamar uma função diferente, pode ser apenas uma condicional 
     public function editar($id) {
         $this->validateUpdate();
 
@@ -129,32 +120,19 @@ class Chamados extends Model {
     }
 
     public static function getCountChamadosAbertos() {
-        //pega o dia de ontem formatado
-        //passa para essa variável data
-        //passa o valor de data certinho como parâmetro da consulta
-        //para mostrar os contadores no dia hoje
-        // $data = $this->getYesterdayFormated();
-        
+                
         $result = Database::getResultFromQuery(
             "SELECT count(chamado_id) 
             FROM chamados
             WHERE chamado_status = 'Aberto'"
-            //AND chamado_criado_em > 'yyyy-mm-dd' (isso já é suficiente)
-            //exemplo:
-            // AND chamado_criado_em > '2023-12-28'"
-            //no caso a data vai ser o valor da variável:
-            // AND chamado_criado_em > '{$data}'"
+            
         );
 
         return $result->fetch_assoc();
     }
 
     public static function getChamadosAbertosNoDia() {
-        //pega o dia de ontem formatado
-        //passa para essa variável data
-        //passa o valor de data certinho como parâmetro da consulta
-        //para mostrar os contadores no dia hoje
-        // $data = $this->getYesterdayFormated();
+        
         $date = new DateTime();
         $today = $date->format('Y-m-d');
 
@@ -165,11 +143,7 @@ class Chamados extends Model {
             FROM chamados
             WHERE chamado_criado_em >= '{$today}'
             AND chamado_status = 'Aberto'"
-            //AND chamado_criado_em > 'yyyy-mm-dd' (isso já é suficiente)
-            //exemplo:
-            // AND chamado_criado_em > '2023-12-28'"
-            //no caso a data vai ser o valor da variável:
-            // AND chamado_criado_em > '{$data}'"
+            
         );
 
         return $result->fetch_assoc();
@@ -239,7 +213,6 @@ class Chamados extends Model {
         $dataFim = getLastDayOfMonth($date)->format('Y-m-d');
 
         $resultado = static::getResultFromSelect([
-            // 'usuario_id_fk' => $usuarioId,
             'raw' => "chamado_criado_em between '{$dataInicio}' AND '{$dataFim}' AND usuario_id_fk = '{$usuarioId}'"
         ]);
 

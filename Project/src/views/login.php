@@ -42,8 +42,7 @@
                         <?= $errors['usuario_senha'] ?>
                     </div>
 
-                    <!-- <a href="#" class="restaurar-senha mx-1">restaurar senha?</a> -->
-                    <!-- função não implementada -->
+                    
                 </div>
             </div>
             <div class="card-footer">

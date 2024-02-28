@@ -27,7 +27,6 @@
                     <tr>
                         <td><?= $usuario->usuario_nome ?></td>
                         <td><?= $usuario->usuario_email ?></td>
-                        <!-- mudar a apresentação dessa data posteriormente -->
                         <td><?= date('d/m/Y', strtotime($usuario->usuario_criado_em)) ?></td>
                         <td class=<?= $usuario->usuario_is_ativo == 1 ? "table-primary" : "table-active" ?>><?= $usuario->usuario_is_ativo == 1 ? "Sim" : "Não" ?></td>
                         

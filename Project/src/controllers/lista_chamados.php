@@ -2,15 +2,13 @@
 session_start();
 requireValidSession();
 
-// $limite = 7;
-// $tamanho = 7;
+
 
 $result = Chamados::getTotalChamados();
 $totalItems = $result['count(chamado_id)'];
 
 $pagination = new Pagination;
 $pagination->setTotalItems($totalItems);
-// $offset = $pagination->calculations();
 
 if(isset($_GET['page'])) {
     $currentPage = $_GET['page'];
@@ -22,9 +20,7 @@ if(isset($_GET['page'])) {
 
 $limit = $pagination->getItemsPerPage();
 
-// funcionando!! 
-// ajustar a variável totalItems e apresentar de forma desc -> update: ajustado 
-// bugou o menu lateral *o* -> update: ajustado
+
 $chamados = Chamados::get(["order" => "order by chamado_id desc limit {$limit} offset {$offset}"]);
 $usuarios = User::get();
 

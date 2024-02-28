@@ -60,11 +60,6 @@
                         <?php if($user->usuario_is_ativo == 1) : ?>
                         <option <?= $_SESSION['user']->usuario_id === $user->usuario_id ? 'selected' : '' ?> value="<?= $user->usuario_id ?>"><?= $user->usuario_nome ?></option>
                         <?php endif ?>
-                        <!-- <option value="2">Jurídico</option>
-                        <option value="3">Atendimento</option>    -->
-                        <!-- <option value="1">Administração</option>
-                        <option value="2">Jurídico</option>
-                        <option value="3">Atendimento</option>    -->
                         <?php endforeach ?>                     
                     </select>
                     <div class="invalid-feedback">
@@ -90,20 +85,8 @@
             
         </div>
         <div class="card-footer d-flex justify-content-center">
-            <!-- se todos os dados passarem pela validação, o href desse butão link
-            chama o controller de confirmação de inserção e carrega na view a 
-            confirmação de abertura do chamado com o número do chamado para 
-            posterior pesquisa -->
-            <!-- <a href="salvar_chamado.php" class="btn btn-success btn-lg">
-                <i class="icofont-check mr-1"></i>
-                Confirma
-            </a> -->
             <button class="btn btn-success btn-lg"><i class="icofont-check mr-1"></i>Confirmar</button>
         </div>
     </form>
     </div>
 </main>
-
-
-<!-- <?= var_dump($usuarios) ?> -->
-<!-- <?= var_dump($_POST) ?> -->

@@ -16,10 +16,3 @@ if(count($_POST) === 0 && isset($_GET['update'])) {
 
 loadTemplateView('atender_chamado', $_POST + ['usuarios' => $users]);
 
-// print_r($users); 
-// echo '<br>';
-// print_r($chamado); 
-// echo '<br>';
-// print_r($chamadoData);
-// echo '<br>';
-// print_r($_GET['update']);

@@ -8,7 +8,6 @@
     ?>
 
     <div class="confirmacao">
-        <!-- passar aqui informações do chamado -->
         <?php if($_POST['chamado_status'] == "Em atendimento"): ?>
         <p>Atendimento iniciado</p>
         <?php elseif($_POST['chamado_status'] == "Finalizado"): ?>
@@ -18,4 +17,3 @@
 
 </main>    
 
-<!-- <?= print_r($_POST) ?> -->
